@@ -12,9 +12,20 @@ export default function Contact() {
     e.preventDefault()
     setStatus('loading')
     try {
-      await new Promise(r => setTimeout(r, 800))
-      setStatus('success')
-    } catch { setStatus('error') }
+      const res = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...form,
+          source: 'reading-buddy-contact',
+          landing_page: '/contact',
+          consent_terms: true,
+        }),
+      })
+      setStatus(res.ok ? 'success' : 'error')
+    } catch {
+      setStatus('error')
+    }
   }
 
   const input = { width:'100%', padding:'0.75rem 1rem', border:`1.5px solid ${C.border}`, borderRadius:10, fontSize:'0.9rem', fontFamily:'DM Sans,sans-serif', outline:'none', boxSizing:'border-box' as const }
@@ -72,20 +83,23 @@ export default function Contact() {
                   <select value={form.plan} onChange={e=>setForm({...form,plan:e.target.value})} style={input}>
                     <option value="">Select…</option>
                     <option value="free">Free trial — one classroom</option>
-                    <option value="premium">Premium Classroom ($59/mo)</option>
+                    <option value="premium_monthly">Premium Classroom ($59/mo)</option>
                     <option value="school">School Plan ($5,900/yr)</option>
                     <option value="enterprise">Enterprise ($35k+)</option>
                     <option value="ndis">NDIS provider plan</option>
                     <option value="demo">Product demo</option>
+                    <option value="custom-books">Custom book library</option>
                   </select>
                 </div>
                 <div>
                   <label style={{ display:'block', fontSize:'0.78rem', fontWeight:700, color:C.navy, marginBottom:'0.4rem', textTransform:'uppercase' as const, letterSpacing:'0.06em' }}>How can we help?</label>
-                  <textarea value={form.message} onChange={e=>setForm({...form,message:e.target.value})} rows={4} style={{...input, resize:'vertical' as const}} placeholder="Tell us about your school, your current reading program, and what you're hoping Reading Buddy can help with."/>
+                  <textarea value={form.message} onChange={e=>setForm({...form,message:e.target.value})} rows={4} style={{...input, resize:'vertical' as const}}
+                    placeholder="Tell us about your school, your current reading program, and what you're hoping Reading Buddy can help with."/>
                 </div>
                 <button type="submit" disabled={status==='loading'} style={{ background:C.sage, color:'white', padding:'1rem', borderRadius:50, fontWeight:700, fontSize:'1rem', border:'none', cursor:'pointer', opacity:status==='loading' ? 0.7 : 1, fontFamily:'DM Sans,sans-serif' }}>
                   {status==='loading' ? 'Sending…' : 'Send message →'}
                 </button>
+                {status==='error' && <p style={{ color:'#c0392b', fontSize:'0.85rem', textAlign:'center' as const }}>Something went wrong. Email us at readingbuddies@outcome-ready.com</p>}
               </form>
             </div>
           )}
