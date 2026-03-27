@@ -232,7 +232,7 @@ export default function Home() {
         {/* Left: copy */}
         <div style={{ padding: '80px 5% 60px 7%', zIndex: 2, position: 'relative' }}>
           <div className="rb-badge">🇦🇺 Built in Australia · NDIS Ready · AI-Powered</div>
-          <h1 className="rb-hero" style={{ fontFamily: 'var(--font-head)', fontWeight: 900, fontSize: 'clamp(2.2rem,4.5vw,3.4rem)', lineHeight: 1.15, color: 'var(--navy)', marginBottom: 20 }}>
+          <h1 style={{ fontFamily: 'var(--font-head)', fontWeight: 900, fontSize: 'clamp(2.2rem,4.5vw,3.4rem)', lineHeight: 1.15, color: 'var(--navy)', marginBottom: 20 }}>
             Reading tests used to be clipboards.<br /><em style={{ fontStyle: 'normal', background: 'linear-gradient(135deg,var(--teal),var(--teal-mid))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>This is what comes next.</em>
           </h1>
           <div className="rb-brain" style={{ marginBottom: 20 }}>🧠✨ Your brain is like a superhero when you read!</div>
