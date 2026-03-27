@@ -487,7 +487,8 @@ export default function Home() {
               <li><span className="rb-check">✓</span>NDIS mode — full</li>
               <li><span className="rb-check">✓</span>12 months data retention</li>
             </ul>
-            <a href="https://buy.stripe.com/9B6aEWdQo2GPfFha524ZG0h" className="rb-plan-cta">Start Free Trial</a>
+            <a href="https://buy.stripe.com/9B6aEWdQo2GPfFha524ZG0h" className="rb-plan-cta">Start Free Trial — $59/mo</a>
+            <a href="https://buy.stripe.com/fZubJ013C3KTgJl2CA4ZG0i" style={{display:'block',textAlign:'center',fontFamily:'var(--font-head)',fontWeight:700,fontSize:'0.78rem',color:'rgba(255,255,255,0.7)',marginTop:8}} >Annual billing ($590/yr) →</a>
           </div>
           <div className="rb-plan">
             <div className="rb-plan-name">Premium School</div>
