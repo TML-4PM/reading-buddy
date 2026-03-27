@@ -1,4 +1,4 @@
-'use client'
+"use client"
 import { useState } from 'react'
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://lzfgigiyqpuuxslsygjt.supabase.co'
