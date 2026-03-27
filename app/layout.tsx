@@ -1,26 +1,24 @@
 import type { Metadata } from 'next'
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Reading Buddy — Your Child\'s Reading Tutor',
-  description: 'AI-powered reading intelligence for Australian schools, NDIS providers, and families. Designed for ages 5–8.',
+  title: 'Reading Buddy — AI Reading Coach for Kids',
+  description: 'Your child\'s AI reading coach with real progress reports in days, not months. Assessment, coaching, and school-ready reporting.',
   openGraph: {
-    title: 'Reading Buddy',
-    description: 'AI-powered reading intelligence for Australian schools and NDIS providers.',
-    locale: 'en_AU',
-    type: 'website',
+    title: 'Reading Buddy — AI Reading Coach',
+    description: 'See real reading progress in 48 hours.',
+    url: 'https://readingbuddy.ai',
+    siteName: 'Reading Buddy',
   },
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
       </head>
       <body>{children}</body>
     </html>
