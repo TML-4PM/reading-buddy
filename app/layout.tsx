@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
       </head>
-      <body>{children}</body>
+      <body>{children}<footer style={{borderTop:'1px solid #e8e2d9',padding:'2rem 1.5rem',textAlign:'center',background:'#faf7f2',fontSize:'0.8rem',color:'#888'}}><a href='https://outcome-ready.vercel.app/sweetspots' target='_blank' style={{color:'#4a7c59',textDecoration:'none',fontWeight:600}}>🧠 AI Sweet Spots Research</a> &nbsp;·&nbsp; <a href='https://outcome-ready.vercel.app' target='_blank' style={{color:'#4a7c59',textDecoration:'none'}}>Outcome Ready</a> &nbsp;·&nbsp; © 2026 Tech 4 Humanity Pty Ltd &nbsp;·&nbsp; ABN 70 666 271 272</footer></body>
     </html>
   )
 }
