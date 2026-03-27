@@ -487,7 +487,7 @@ export default function Home() {
               <li><span className="rb-check">✓</span>NDIS mode — full</li>
               <li><span className="rb-check">✓</span>12 months data retention</li>
             </ul>
-            <a href="mailto:readingbuddies@outcome-ready.com?subject=Premium+Classroom" className="rb-plan-cta">Start Free Trial</a>
+            <a href="https://buy.stripe.com/9B6aEWdQo2GPfFha524ZG0h" className="rb-plan-cta">Start Free Trial</a>
           </div>
           <div className="rb-plan">
             <div className="rb-plan-name">Premium School</div>
@@ -500,7 +500,7 @@ export default function Home() {
               <li><span className="rb-check">✓</span>Basic LMS / SIS integrations</li>
               <li><span className="rb-cross">–</span>Multi-site analytics</li>
             </ul>
-            <a href="mailto:readingbuddies@outcome-ready.com?subject=School+Plan" className="rb-plan-cta">Start School Plan</a>
+            <a href="https://buy.stripe.com/fZufZgeUsa9hbp1dhe4ZG0j" className="rb-plan-cta">Start School Plan</a>
           </div>
           <div className="rb-plan">
             <div className="rb-plan-name">Enterprise</div>
@@ -562,7 +562,7 @@ export default function Home() {
             <ul>
               <li><a href="mailto:readingbuddies@outcome-ready.com?subject=Free+Trial">Free Trial</a></li>
               <li><a href="mailto:readingbuddies@outcome-ready.com?subject=Premium">Premium Classroom</a></li>
-              <li><a href="mailto:readingbuddies@outcome-ready.com?subject=School+Plan">School Plan</a></li>
+              <li><a href="https://buy.stripe.com/fZufZgeUsa9hbp1dhe4ZG0j">School Plan</a></li>
               <li><a href="mailto:readingbuddies@outcome-ready.com?subject=Enterprise">Enterprise</a></li>
             </ul>
           </div>
