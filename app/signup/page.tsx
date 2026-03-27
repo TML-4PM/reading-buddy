@@ -172,7 +172,7 @@ Heard via: ${form.hear}`,
           </p>
           {/* Droid */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/droid.png" alt="Reading Buddy Droid" style={{ height: 120, margin: '0 auto 24px', display: 'block' }} />
+          <img src="https://lzfgigiyqpuuxslsygjt.supabase.co/storage/v1/object/public/images/AHC%20droid%20head.webp" alt="Reading Buddy Droid" style={{ height: 120, margin: '0 auto 24px', display: 'block' }} />
           <a href="/" style={{ display: 'inline-block', background: 'var(--teal)', color: '#fff', fontFamily: 'var(--font-head)', fontWeight: 700, padding: '12px 28px', borderRadius: 40, textDecoration: 'none' }}>
             ← Back to Reading Buddy
           </a>
@@ -208,7 +208,7 @@ Heard via: ${form.hear}`,
         <div className="signup-left">
           <a href="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', marginBottom: 40 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/droid.png" alt="Reading Buddy" style={{ height: 40, filter: 'brightness(0) invert(1)' }} />
+            <img src="https://lzfgigiyqpuuxslsygjt.supabase.co/storage/v1/object/public/images/AHC%20droid%20head.webp" alt="Reading Buddy" style={{ height: 40, filter: 'brightness(0) invert(1)' }} />
             <span style={{ fontFamily: 'var(--font-head)', fontWeight: 900, fontSize: '1.2rem', color: '#fff' }}>Reading Buddy</span>
           </a>
 
