@@ -3,8 +3,8 @@ import './globals.css'
 
 export const metadata: Metadata = {
   icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
+    icon: 'https://lzfgigiyqpuuxslsygjt.supabase.co/storage/v1/object/public/images/AHC%20droid%20head.webp',
+    shortcut: 'https://lzfgigiyqpuuxslsygjt.supabase.co/storage/v1/object/public/images/AHC%20droid%20head.webp',
   },
   title: 'Reading Buddy — AI Reading Coach for Kids',
   description: 'Your child\'s AI reading coach with real progress reports in days, not months. Assessment, coaching, and school-ready reporting.',
