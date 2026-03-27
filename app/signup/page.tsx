@@ -60,99 +60,28 @@ export default function SignupPage() {
     setError('')
 
     try {
-      // 1. Write to cap_leads via bridge
-      const res = await fetch('https://m5oqj21chd.execute-api.ap-southeast-2.amazonaws.com/lambda/invoke', {
+      const res = await fetch('/api/lead', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': 'bk_tOH8P5WD3mxBKfICa4yI56vJhpuYOynfdf1d_GfvdK4',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          fn: 'troy-sql-executor',
-          route: 'sql',
-          sql: `INSERT INTO cap_leads 
-            (first_name, last_name, email, organisation, role, lead_source, status, notes, created_at)
-            VALUES (
-              '${form.first_name.replace(/'/g, "''")}',
-              '${form.last_name.replace(/'/g, "''")}',
-              '${form.email.replace(/'/g, "''")}',
-              '${form.organisation.replace(/'/g, "''")}',
-              '${form.role.replace(/'/g, "''")}',
-              'reading-buddy-signup',
-              'new',
-              '{"plan":"${plan}","state":"${form.state}","students":"${form.students}","hear":"${form.hear}","campaign":"rb-launch-2026"}',
-              NOW()
-            ) RETURNING id`,
+          first_name: form.first_name,
+          last_name: form.last_name,
+          email: form.email,
+          organisation: form.organisation,
+          role: form.role,
+          state: form.state,
+          plan: plan,
+          message: form.hear ? `How they heard: ${form.hear}` : '',
+          source: 'reading-buddy-signup',
+          landing_page: '/signup',
+          consent_terms: true,
+          consent_marketing: true,
         }),
       })
-
-      const data = await res.json()
-
-      if (!data.success && data.error) {
-        throw new Error(data.error)
-      }
-
-      // 2. Send confirmation email via SES
-      await fetch('https://m5oqj21chd.execute-api.ap-southeast-2.amazonaws.com/lambda/invoke', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': 'bk_tOH8P5WD3mxBKfICa4yI56vJhpuYOynfdf1d_GfvdK4',
-        },
-        body: JSON.stringify({
-          fn: 'troy-ses-sender',
-          to: form.email,
-          subject: `Welcome to Reading Buddy — ${planInfo.name} trial starts now`,
-          body: `Hi ${form.first_name},
-
-Welcome to Reading Buddy! 🎉
-
-Your ${planInfo.name} trial is confirmed. No credit card required.
-
-What happens next:
-1. Our team will set up your classroom within 24 hours
-2. You'll receive your login link by email
-3. Your first session takes less than 5 minutes to start
-
-Your plan: ${planInfo.name}
-Organisation: ${form.organisation}
-
-Questions? Reply to this email or contact us at readingbuddies@outcome-ready.com
-
-The Reading Buddy Team
-Tech 4 Humanity Pty Ltd · ABN 70 666 271 272
-https://reading-buddy-by-outcome-ready.vercel.app`,
-        }),
-      })
-
-      // 3. Notify team
-      await fetch('https://m5oqj21chd.execute-api.ap-southeast-2.amazonaws.com/lambda/invoke', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': 'bk_tOH8P5WD3mxBKfICa4yI56vJhpuYOynfdf1d_GfvdK4',
-        },
-        body: JSON.stringify({
-          fn: 'troy-ses-sender',
-          to: 'readingbuddies@outcome-ready.com',
-          subject: `🆕 New Reading Buddy signup — ${form.first_name} ${form.last_name} (${plan})`,
-          body: `New signup received:
-
-Name: ${form.first_name} ${form.last_name}
-Email: ${form.email}
-Organisation: ${form.organisation}
-Role: ${form.role}
-State: ${form.state}
-Students: ${form.students}
-Plan: ${plan}
-Heard via: ${form.hear}`,
-        }),
-      })
-
+      if (!res.ok) throw new Error('submit_failed')
       setDone(true)
-    } catch (err) {
-      console.error(err)
-      setError('Something went wrong. Please email readingbuddies@outcome-ready.com directly.')
+    } catch {
+      setError('Something went wrong — please email us at hello@tech4humanity.com.au')
     } finally {
       setLoading(false)
     }
