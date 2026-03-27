@@ -454,7 +454,7 @@ export default function Home() {
       </section>
 
       {/* PRICING */}
-      <!-- CUSTOMISABLE BOOKS SECTION -->
+      {/* CUSTOMISABLE BOOKS SECTION */}
       <section className="rb-section" id="custom-books" style={{ background: 'linear-gradient(135deg, #f0f8f3 0%, #e8f5ee 100%)', borderTop: '1px solid #c5dfc9' }}>
         <div style={{ textAlign: 'center', marginBottom: 48 }}>
           <div className="rb-section-label">Key Differentiator</div>
@@ -465,7 +465,7 @@ export default function Home() {
           {[
             { icon: '📖', title: 'Your texts, your program', desc: 'Upload PDFs, Word docs, or URLs. Reading Buddy turns any text into a fully scored, assessed reading session.' },
             { icon: '🎯', title: 'Per-child customisation', desc: 'Assign specific books to individual students based on their reading level, interests, or NDIS goals. Automatically.' },
-            { icon: '🏫', title: 'Per-class libraries', desc: 'Each teacher builds their own class library. Aligned to PM Readers, Oxford, Sunshine, or your school's chosen program.' },
+            { icon: '🏫', title: 'Per-class libraries', desc: 'Each teacher builds their own class library. Aligned to PM Readers, Oxford, Sunshine, or your school\'s chosen program.' },
             { icon: '🇦🇺', title: 'Curriculum-mapped', desc: 'Books tagged to Australian Curriculum outcomes. Progress data links directly to reporting requirements.' },
             { icon: '🎗', title: 'NDIS goal-aligned content', desc: 'For NDIS providers — books mapped directly to participant goals. Every session generates goal-referenced evidence.' },
             { icon: '📊', title: 'Tracks every custom text', desc: 'Same WPM, accuracy, prosody scoring on any text. Growth charts work across your entire custom library.' },
