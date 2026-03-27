@@ -192,7 +192,7 @@ export default function MarketingPage() {
           <div className="mkt-hero-left">
             <h1>Spark Your Child's Curiosity As They Master Reading</h1>
             <p>Designed for ages 5–8, this safe, distraction-free application uses the phonics approach to help kids learn to read. Instead of points, it rewards their curiosity with answers to their many questions—building confidence and a love for learning.</p>
-            <a href="mailto:readingbuddies@outcome-ready.com?subject=Start Learning" className="mkt-btn-primary">Start Learning</a>
+            <a href="/signup?plan=premium_monthly" className="mkt-btn-primary">Start Free Trial</a>
           </div>
           <div className="mkt-hero-phone">
             <div style={{ width: 280, minHeight: 560, background: '#fff', borderRadius: 46, border: '9px solid #111', boxShadow: '0 40px 100px rgba(0,0,0,0.22)', position: 'relative', overflow: 'hidden', transform: 'perspective(1200px) rotateY(-8deg) rotateX(4deg)' }}>
@@ -236,7 +236,7 @@ export default function MarketingPage() {
             </div>
             <div className="mkt-row-text">
               <h2>Give your child the gift of confident reading and the freedom to explore their world.</h2>
-              <a href="mailto:readingbuddies@outcome-ready.com?subject=Start Learning" className="mkt-btn-black">Start Learning</a>
+              <a href="/signup?plan=premium_monthly" className="mkt-btn-black">Start Learning</a>
             </div>
           </div>
         </section>
