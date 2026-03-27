@@ -243,7 +243,7 @@ export default function Home() {
           </div>
           {/* Stat pills */}
           <div style={{ display: 'flex', gap: 12, marginTop: 32, flexWrap: 'wrap' }}>
-            {[['16×','Book sets replaced'],['30s','To score a session'],['100%','NDIS compliance']].map(([n,l]) => (
+            {[['16×','Book sets replaced'],['30s','To score a session'],['100%','NDIS compliance'],['∞','Books — customised per child']].map(([n,l]) => (
               <div key={n} style={{ background: 'var(--white)', border: '1.5px solid var(--border)', borderRadius: 40, padding: '6px 14px', display: 'flex', alignItems: 'center', gap: 8 }}>
                 <span style={{ fontFamily: 'var(--font-head)', fontWeight: 900, fontSize: '1rem', color: 'var(--teal)' }}>{n}</span>
                 <span style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>{l}</span>
@@ -296,6 +296,7 @@ export default function Home() {
               ['⚡', 'Scores WPM, accuracy, prosody in under 30 seconds'],
               ['📋', 'Generates NDIS progress notes automatically'],
               ['📊', 'Plots growth against national benchmarks, live'],
+              ['📚', 'Customisable book library — your texts, your curriculum, per child'],
             ].map(([icon, text]) => (
               <div key={text} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
                 <span style={{ fontSize: '1.2rem', flexShrink: 0, marginTop: 2 }}>{icon}</span>
@@ -436,6 +437,7 @@ export default function Home() {
               { icon: '👨‍👩‍👧', title: 'Parent Snapshot', desc: 'Plain-English. What they worked on, how they\'re going, what to practise.' },
               { icon: '🏫', title: 'Class Health Report', desc: 'Every student: on track, needs a push, or urgent intervention.' },
               { icon: '📚', title: 'Book Recommendations', desc: 'AI-matched to level, history, and interests. Library catalogue linked.' },
+              { icon: '🎨', title: 'Customisable Book Library', desc: 'Upload your own texts, align to PM Readers, Oxford, or any program. Customised per class or per child — matched to their learning outcomes.' },
             ].map(r => (
               <div key={r.title} className="rb-report">
                 <div className="rb-report-icon">{r.icon}</div>
@@ -453,6 +455,39 @@ export default function Home() {
       </section>
 
       {/* PRICING */}
+      <!-- CUSTOMISABLE BOOKS SECTION -->
+      <section className="rb-section" id="custom-books" style={{ background: 'linear-gradient(135deg, #f0f8f3 0%, #e8f5ee 100%)', borderTop: '1px solid #c5dfc9' }}>
+        <div style={{ textAlign: 'center', marginBottom: 48 }}>
+          <div className="rb-section-label">Key Differentiator</div>
+          <h2 className="rb-section-title" style={{ color: 'var(--navy)' }}>Books customised to every child.<br />Not one size fits all.</h2>
+          <p className="rb-section-sub" style={{ maxWidth: 560, margin: '12px auto 0' }}>Reading Buddy isn't locked to a single book series. Upload your own texts, align to your school's reading program, and customise books per class or per individual child — automatically matched to their learning outcomes.</p>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 20, marginBottom: 40 }}>
+          {[
+            { icon: '📖', title: 'Your texts, your program', desc: 'Upload PDFs, Word docs, or URLs. Reading Buddy turns any text into a fully scored, assessed reading session.' },
+            { icon: '🎯', title: 'Per-child customisation', desc: 'Assign specific books to individual students based on their reading level, interests, or NDIS goals. Automatically.' },
+            { icon: '🏫', title: 'Per-class libraries', desc: 'Each teacher builds their own class library. Aligned to PM Readers, Oxford, Sunshine, or your school's chosen program.' },
+            { icon: '🇦🇺', title: 'Curriculum-mapped', desc: 'Books tagged to Australian Curriculum outcomes. Progress data links directly to reporting requirements.' },
+            { icon: '🎗', title: 'NDIS goal-aligned content', desc: 'For NDIS providers — books mapped directly to participant goals. Every session generates goal-referenced evidence.' },
+            { icon: '📊', title: 'Tracks every custom text', desc: 'Same WPM, accuracy, prosody scoring on any text. Growth charts work across your entire custom library.' },
+          ].map(f => (
+            <div key={f.title} style={{ background: 'white', borderRadius: 14, padding: '1.5rem', border: '1.5px solid #c5dfc9', boxShadow: '0 2px 12px rgba(29,110,99,0.06)' }}>
+              <div style={{ fontSize: '2rem', marginBottom: '0.6rem' }}>{f.icon}</div>
+              <h4 style={{ fontFamily: 'var(--font-head)', fontWeight: 800, fontSize: '0.95rem', color: 'var(--navy)', marginBottom: '0.4rem' }}>{f.title}</h4>
+              <p style={{ fontSize: '0.82rem', color: 'var(--muted)', lineHeight: 1.65 }}>{f.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div style={{ background: 'white', borderRadius: 16, padding: '1.5rem 2rem', border: '2px solid #4a7c59', display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
+          <div style={{ fontSize: '2.5rem' }}>💡</div>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontFamily: 'var(--font-head)', fontWeight: 800, fontSize: '1rem', color: 'var(--navy)', marginBottom: 4 }}>Every competitor locks you into their book series. We don't.</div>
+            <div style={{ fontSize: '0.85rem', color: 'var(--muted)', lineHeight: 1.6 }}>Your school has already invested in a reading program. Reading Buddy works with it — not against it. Keep your PM Readers, your Oxford books, your school library. Just add AI.</div>
+          </div>
+          <a href="mailto:readingbuddies@outcome-ready.com?subject=Custom+Books" className="rb-btn rb-btn-primary" style={{ whiteSpace: 'nowrap' }}>See how it works →</a>
+        </div>
+      </section>
+
       <section className="rb-section-navy" id="pricing">
         <div className="rb-text-center">
           <div className="rb-section-label light">Value-based pricing · No lock-in · Cancel anytime</div>
@@ -578,6 +613,21 @@ export default function Home() {
               <li><a href="#">Australian Servers 🇦🇺</a></li>
               <li><a href="#">Privacy Act Compliant</a></li>
             </ul>
+          </div>
+        </div>
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1.5rem', marginBottom: '1.5rem' }}>
+          <div style={{ fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '1rem', textAlign: 'center' }}>Also from Tech 4 Humanity</div>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
+            {[
+              ['OutcomeReady', 'https://outcome-ready.vercel.app'],
+              ['ThrivingOS', 'https://outcome-ready.vercel.app/thriving-kids'],
+              ['AI for Tradies', 'https://ai4tradies.org'],
+              ['Valdocco Primary', 'https://valdocco-primary.vercel.app'],
+              ['Augmented Memories', 'https://augmentedmemories.org'],
+              ['AHC', 'https://augmented-humanity.com'],
+            ].map(([name, url]) => (
+              <a key={name} href={url} style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.55)', textDecoration: 'none', transition: 'color 0.2s' }}>{name}</a>
+            ))}
           </div>
         </div>
         <div className="rb-footer-bottom">
