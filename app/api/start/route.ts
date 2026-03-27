@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { createClient } from '@supabase/supabase-js'
 
 export async function POST(req: NextRequest) {
   const body = await req.json()
@@ -8,61 +9,48 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
   }
 
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-  const supabaseKey = process.env.SUPABASE_SERVICE_KEY
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY
 
-  try {
-    // Create customer record
-    const res = await fetch(`${supabaseUrl}/rest/v1/t4h_customer`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey': supabaseKey!,
-        'Authorization': `Bearer ${supabaseKey}`,
-        'Prefer': 'return=representation',
-      },
-      body: JSON.stringify({ email, product_key: 'reading_buddy' }),
-    })
-
-    const customer = await res.json()
-    const customerId = Array.isArray(customer) ? customer[0]?.id : customer?.id
-
-    // Log usage event
-    if (customerId) {
-      await fetch(`${supabaseUrl}/rest/v1/t4h_usage_event`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': supabaseKey!,
-          'Authorization': `Bearer ${supabaseKey}`,
-        },
-        body: JSON.stringify({
-          customer_id: customerId,
-          product_key: 'reading_buddy',
-          event_type: 'signup',
-          payload: { name, childName, plan },
-        }),
-      })
-
-      // Log evidence (PARTIAL until report generated)
-      await fetch(`${supabaseUrl}/rest/v1/t4h_evidence`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': supabaseKey!,
-          'Authorization': `Bearer ${supabaseKey}`,
-        },
-        body: JSON.stringify({
-          product_key: 'reading_buddy',
-          customer_id: customerId,
-          evidence_type: 'signup',
-          classification: 'PARTIAL',
-        }),
-      })
-    }
-  } catch (err) {
-    console.error('Supabase error:', err)
+  if (!url || !key) {
+    console.error('Reading Buddy: missing Supabase env vars')
+    // Still return success — don't block the user
+    return NextResponse.json({ success: true, mode: 'degraded' })
   }
 
-  return NextResponse.json({ success: true })
+  const supabase = createClient(url, key, { auth: { persistSession: false } })
+
+  try {
+    const { data, error } = await supabase
+      .from('cap_leads')
+      .insert({
+        biz_key: 'reading-buddy',
+        source: 'reading-buddy-signup',
+        lead_type: plan || 'freemium',
+        full_name: name,
+        email,
+        message: childName ? `Child: ${childName}` : null,
+        landing_page: '/signup',
+        consent_terms: true,
+        raw_payload: body,
+      })
+      .select('id')
+      .single()
+
+    if (error) throw error
+
+    // Telemetry
+    await supabase.from('or_event_log').insert({
+      event_name: 'rb_signup',
+      page_path: '/signup',
+      lead_id: data?.id,
+      event_payload: { plan, biz_key: 'reading-buddy' },
+    })
+
+    return NextResponse.json({ success: true, lead_id: data?.id })
+  } catch (err: unknown) {
+    console.error('Reading Buddy signup error:', err)
+    // Best-effort fallback: still return success
+    return NextResponse.json({ success: true, mode: 'fallback' })
+  }
 }
