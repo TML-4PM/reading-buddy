@@ -18,7 +18,7 @@ const IMGS = {
   // Home reading
   homeReading: 'https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?w=800&q=80&auto=format',
   // Droid from repo
-  droid: '/droid.png',
+  droid: 'https://lzfgigiyqpuuxslsygjt.supabase.co/storage/v1/object/public/images/AHC%20droid%20head.webp',
   sceneClassroom: '/scene-classroom.png',
   sceneNdis: '/scene-ndis.png',
   scenePrincipal: '/scene-principal.png',
@@ -214,7 +214,7 @@ export default function Home() {
       <nav className="rb-nav">
         <div className="rb-nav-logo">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/droid.png" alt="Reading Buddy" style={{ height: 32, width: 'auto' }} />
+          <img src="https://lzfgigiyqpuuxslsygjt.supabase.co/storage/v1/object/public/images/AHC%20droid%20head.webp" alt="Reading Buddy" style={{ height: 32, width: 'auto' }} />
           Reading Buddy
         </div>
         <ul className="rb-nav-links">
@@ -258,7 +258,7 @@ export default function Home() {
           {/* Droid overlay */}
           <div style={{ position: 'absolute', bottom: 40, right: 40, background: 'rgba(255,255,255,0.95)', borderRadius: 20, padding: '16px 20px', boxShadow: '0 8px 32px rgba(0,0,0,0.2)', display: 'flex', alignItems: 'center', gap: 12, backdropFilter: 'blur(8px)' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/droid.png" alt="AI Droid" style={{ height: 56, width: 'auto' }} />
+            <img src="https://lzfgigiyqpuuxslsygjt.supabase.co/storage/v1/object/public/images/AHC%20droid%20head.webp" alt="AI Droid" style={{ height: 56, width: 'auto' }} />
             <div>
               <div style={{ fontFamily: 'var(--font-head)', fontWeight: 800, fontSize: '0.85rem', color: 'var(--navy)' }}>Session scored ✓</div>
               <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>WPM: 118 · Accuracy: 94%</div>
@@ -307,7 +307,7 @@ export default function Home() {
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/droid.png" alt="Reading Buddy AI Droid" style={{ width: '100%', maxWidth: 320, height: 'auto' }} />
+          <img src="https://lzfgigiyqpuuxslsygjt.supabase.co/storage/v1/object/public/images/AHC%20droid%20head.webp" alt="Reading Buddy AI Droid" style={{ width: '100%', maxWidth: 320, height: 'auto' }} />
           <div style={{ fontSize: '0.8rem', color: 'var(--muted)', textAlign: 'center', fontStyle: 'italic' }}>
             🤖 Augmented Humanity Coach · Reading intelligence engine
           </div>
@@ -574,7 +574,7 @@ export default function Home() {
           <div>
             <div className="rb-footer-brand">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/droid.png" alt="Reading Buddy" style={{ height: 36, width: 'auto', filter: 'brightness(0) invert(1)' }} />
+              <img src="https://lzfgigiyqpuuxslsygjt.supabase.co/storage/v1/object/public/images/AHC%20droid%20head.webp" alt="Reading Buddy" style={{ height: 36, width: 'auto', filter: 'brightness(0) invert(1)' }} />
               Reading Buddy
             </div>
             <p className="rb-footer-about">AI-powered reading intelligence for Australian schools and NDIS providers. Built to replace plastic tubs, clipboards, and hours of weekly admin.</p>
