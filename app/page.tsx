@@ -223,7 +223,7 @@ export default function Home() {
           <li><a href="#contexts">Schools & NDIS</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="mailto:readingbuddies@outcome-ready.com" className="rb-nav-cta">Get Started</a></li>
+          <li><a href="/signup?plan=premium_monthly" className="rb-nav-cta">Get Started</a></li>
         </ul>
       </nav>
 
@@ -238,7 +238,7 @@ export default function Home() {
           <div className="rb-brain" style={{ marginBottom: 20 }}>🧠✨ Your brain is like a superhero when you read!</div>
           <p className="rb-hero-sub">AI reading intelligence that listens, scores, reports, and recommends — automatically, in real time, for every student, in every session.</p>
           <div className="rb-hero-actions">
-            <a href="#try-it" className="rb-btn rb-btn-primary">▶ Try it Free — One Class</a>
+            <a href="/signup" className="rb-btn rb-btn-primary">▶ Start Free — No Card</a>
             <a href="#pricing" className="rb-btn rb-btn-outline">See Pricing</a>
           </div>
           {/* Stat pills */}
@@ -522,8 +522,8 @@ export default function Home() {
               <li><span className="rb-check">✓</span>NDIS mode — full</li>
               <li><span className="rb-check">✓</span>12 months data retention</li>
             </ul>
-            <a href="https://buy.stripe.com/9B6aEWdQo2GPfFha524ZG0h" className="rb-plan-cta">Start Free Trial — $59/mo</a>
-            <a href="https://buy.stripe.com/fZubJ013C3KTgJl2CA4ZG0i" style={{display:'block',textAlign:'center',fontFamily:'var(--font-head)',fontWeight:700,fontSize:'0.78rem',color:'rgba(255,255,255,0.7)',marginTop:8}} >Annual billing ($590/yr) →</a>
+            <a href="/signup?plan=premium_monthly" className="rb-plan-cta">Start Free Trial — $59/mo</a>
+            <a href="/signup?plan=premium_annual" style={{display:'block',textAlign:'center',fontFamily:'var(--font-head)',fontWeight:700,fontSize:'0.78rem',color:'rgba(255,255,255,0.7)',marginTop:8}} >Annual billing ($590/yr) →</a>
           </div>
           <div className="rb-plan">
             <div className="rb-plan-name">Premium School</div>
@@ -536,7 +536,7 @@ export default function Home() {
               <li><span className="rb-check">✓</span>Basic LMS / SIS integrations</li>
               <li><span className="rb-cross">–</span>Multi-site analytics</li>
             </ul>
-            <a href="https://buy.stripe.com/fZufZgeUsa9hbp1dhe4ZG0j" className="rb-plan-cta">Start School Plan</a>
+            <a href="/signup?plan=school" className="rb-plan-cta">Start School Plan</a>
           </div>
           <div className="rb-plan">
             <div className="rb-plan-name">Enterprise</div>
@@ -598,7 +598,7 @@ export default function Home() {
             <ul>
               <li><a href="mailto:readingbuddies@outcome-ready.com?subject=Free+Trial">Free Trial</a></li>
               <li><a href="mailto:readingbuddies@outcome-ready.com?subject=Premium">Premium Classroom</a></li>
-              <li><a href="https://buy.stripe.com/fZufZgeUsa9hbp1dhe4ZG0j">School Plan</a></li>
+              <li><a href="/signup?plan=school">School Plan</a></li>
               <li><a href="mailto:readingbuddies@outcome-ready.com?subject=Enterprise">Enterprise</a></li>
             </ul>
           </div>
