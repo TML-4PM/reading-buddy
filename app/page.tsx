@@ -523,7 +523,7 @@ export default function Home() {
               <li><span className="rb-check">✓</span>12 months data retention</li>
             </ul>
             <a href="/signup?plan=premium_monthly" className="rb-plan-cta">Start Free Trial — $59/mo</a>
-            <a href="/signup?plan=premium_annual" style={{display:'block',textAlign:'center',fontFamily:'var(--font-head)',fontWeight:700,fontSize:'0.78rem',color:'rgba(255,255,255,0.7)',marginTop:8}} >Annual billing ($590/yr) →</a>
+            <a href="/signup?plan=premium_annual" style={{display:'block',textAlign:'center',fontFamily:'var(--font-head)',fontWeight:700,fontSize:'0.78rem',color:'rgba(255,255,255,0.7)',marginTop:8}}>Annual billing ($590/yr) →</a>
           </div>
           <div className="rb-plan">
             <div className="rb-plan-name">Premium School</div>
