@@ -2,6 +2,10 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+  },
   title: 'Reading Buddy — AI Reading Coach for Kids',
   description: 'Your child\'s AI reading coach with real progress reports in days, not months. Assessment, coaching, and school-ready reporting.',
   openGraph: {
