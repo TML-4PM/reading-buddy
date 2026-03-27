@@ -437,7 +437,6 @@ export default function Home() {
               { icon: '👨‍👩‍👧', title: 'Parent Snapshot', desc: 'Plain-English. What they worked on, how they\'re going, what to practise.' },
               { icon: '🏫', title: 'Class Health Report', desc: 'Every student: on track, needs a push, or urgent intervention.' },
               { icon: '📚', title: 'Book Recommendations', desc: 'AI-matched to level, history, and interests. Library catalogue linked.' },
-              { icon: '🎨', title: 'Customisable Book Library', desc: 'Upload your own texts, align to PM Readers, Oxford, or any program. Customised per class or per child — matched to their learning outcomes.' },
             ].map(r => (
               <div key={r.title} className="rb-report">
                 <div className="rb-report-icon">{r.icon}</div>
