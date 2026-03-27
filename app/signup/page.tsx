@@ -1,8 +1,6 @@
 "use client"
 import { useState } from 'react'
 
-const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://lzfgigiyqpuuxslsygjt.supabase.co'
-const SUPABASE_ANON = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
 
 type Plan = 'freemium' | 'premium_monthly' | 'premium_annual' | 'school'
 
