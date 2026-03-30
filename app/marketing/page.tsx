@@ -63,7 +63,7 @@ export default function MarketingPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    window.location.href = `mailto:readingbuddies@outcome-ready.com?subject=Message from ${form.name}&body=${form.message}`
+    window.location.href = `mailto:readingbuddy@outcome-ready.com?subject=Message from ${form.name}&body=${form.message}`
     setSent(true)
   }
 
@@ -183,7 +183,7 @@ export default function MarketingPage() {
           <div className="mkt-nav-links">
             <a href="#about">About Us</a>
             <a href="#contact">Contact Us</a>
-            <a href="mailto:readingbuddies@outcome-ready.com" className="mkt-btn-login">Login</a>
+            <a href="mailto:readingbuddy@outcome-ready.com" className="mkt-btn-login">Login</a>
           </div>
         </nav>
 
@@ -470,7 +470,7 @@ export default function MarketingPage() {
         <footer className="mkt-footer">
           <span className="mkt-footer-logo">Reading Buddy</span>
           <p style={{ marginBottom: 8 }}>AI-powered reading intelligence for Australian schools and NDIS providers.</p>
-          <p style={{ marginBottom: 16 }}><a href="mailto:readingbuddies@outcome-ready.com">readingbuddies@outcome-ready.com</a></p>
+          <p style={{ marginBottom: 16 }}><a href="mailto:readingbuddy@outcome-ready.com">readingbuddy@outcome-ready.com</a></p>
           <p style={{ fontSize: '0.8rem' }}>Tech 4 Humanity Pty Ltd · ABN 70 666 271 272 · Built in Australia 🇦🇺</p>
           <p style={{ fontSize: '0.8rem', marginTop: 8 }}>
             <a href="/" style={{ color: 'rgba(255,255,255,0.5)', marginRight: 16 }}>← Main Site</a>
