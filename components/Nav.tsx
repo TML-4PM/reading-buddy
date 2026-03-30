@@ -38,7 +38,7 @@ export default function Nav() {
             </Link>
           </li>
           <li>
-            <Link href="mailto:readingbuddies@outcome-ready.com" style={{ background:'#4a7c59', color:'white', padding:'0.55rem 1.25rem', borderRadius:50, fontWeight:600, fontSize:'0.875rem', textDecoration:'none' }}>
+            <Link href="mailto:readingbuddy@outcome-ready.com" style={{ background:'#4a7c59', color:'white', padding:'0.55rem 1.25rem', borderRadius:50, fontWeight:600, fontSize:'0.875rem', textDecoration:'none' }}>
               Get Started
             </Link>
           </li>
@@ -71,7 +71,7 @@ export default function Nav() {
             style={{ display:'block', padding:'0.6rem 0', fontSize:'0.95rem', color:'#4a7c59', fontWeight:700, textDecoration:'none', borderBottom:'1px solid #f0ebe3' }}>
             🌿 OutcomeReady
           </Link>
-          <Link href="mailto:readingbuddies@outcome-ready.com"
+          <Link href="mailto:readingbuddy@outcome-ready.com"
             style={{ display:'block', marginTop:'1rem', background:'#4a7c59', color:'white', padding:'0.75rem', borderRadius:8, fontWeight:600, textAlign:'center' as const, textDecoration:'none' }}>
             Get Started
           </Link>
