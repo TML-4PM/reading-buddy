@@ -321,7 +321,7 @@ export default function LearnPage() {
         {/* Mini nav */}
         <div className="lb-mini-nav">
           <a href="/" className="lb-back">← Reading Buddy</a>
-          <a href="mailto:readingbuddies@outcome-ready.com" className="lb-email-link">Get Full Access ✨</a>
+          <a href="mailto:readingbuddy@outcome-ready.com" className="lb-email-link">Get Full Access ✨</a>
         </div>
 
         {/* Main */}
