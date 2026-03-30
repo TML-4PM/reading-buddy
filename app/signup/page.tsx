@@ -158,7 +158,7 @@ export default function SignupPage() {
           </div>
 
           <div style={{ marginTop: 24, color: 'rgba(255,255,255,0.5)', fontSize: '0.78rem' }}>
-            Questions? <a href="mailto:readingbuddies@outcome-ready.com" style={{ color: 'var(--amber)' }}>readingbuddies@outcome-ready.com</a>
+            Questions? <a href="mailto:readingbuddy@outcome-ready.com" style={{ color: 'var(--amber)' }}>readingbuddy@outcome-ready.com</a>
           </div>
         </div>
 
@@ -244,7 +244,7 @@ export default function SignupPage() {
             </button>
 
             <p style={{ textAlign: 'center', marginTop: 14, fontSize: '0.78rem', color: 'var(--muted)' }}>
-              Already have an account? <a href="mailto:readingbuddies@outcome-ready.com" style={{ color: 'var(--teal)', fontWeight: 700 }}>Contact us</a>
+              Already have an account? <a href="mailto:readingbuddy@outcome-ready.com" style={{ color: 'var(--teal)', fontWeight: 700 }}>Contact us</a>
             </p>
           </form>
         </div>
