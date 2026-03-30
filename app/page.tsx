@@ -390,30 +390,98 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CONTEXTS — with real scene photos */}
+      {/* CONTEXTS — flip cards */}
       <section className="rb-section-dark" id="contexts">
         <div className="rb-text-center" style={{ marginBottom: 48 }}>
           <div className="rb-section-label">Designed for every environment</div>
           <h2 className="rb-section-title">Classroom. Clinic. Home. School-wide.</h2>
+          <p className="rb-section-sub" style={{ marginTop: 8, opacity: 0.7, fontSize: '0.85rem' }}>Hover each card to see how it works in your context</p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
           {[
-            { icon: '🏫', title: 'In the Classroom', desc: 'Every student scored, every session. Teachers get metrics — not marking.', img: IMGS.sceneClassroom, link: 'Public & Private Schools' },
-            { icon: '🎯', title: 'In the Clinic', desc: 'NDIS documentation done. Providers spend their time on therapy, not paperwork.', img: IMGS.sceneNdis, link: 'NDIS Providers' },
-            { icon: '🏠', title: 'At Home', desc: 'Plain-English snapshots after every session. Parents see real progress.', img: IMGS.sceneHome, link: 'Parents' },
-            { icon: '📊', title: 'Across the School', desc: 'Principals see every classroom in one live dashboard. No end-of-term surprises.', img: IMGS.scenePrincipal, link: 'School Leaders' },
+            {
+              color: '#1a2e4a',
+              icon: '🏫',
+              title: 'In the Classroom',
+              tagline: 'Student reads aloud. AI listens, scores, and reports instantly. No clipboards, no manual levelling.',
+              pills: [{ val: '30s', label: 'Session scored' }, { val: '0', label: 'Manual effort' }, { val: 'Real-time', label: 'Reports' }],
+              img: IMGS.sceneClassroom,
+              link: 'Public & Private Schools',
+              linkHref: 'mailto:readingbuddies@outcome-ready.com?subject=Schools',
+              backDesc: 'Every student scored in every session. Teachers receive six automatic reports — no marking, no clipboards, no levelling kits.',
+              bullets: ['WPM, accuracy & prosody scored in 30 seconds', 'Growth tracked against national benchmarks', 'Parent snapshots auto-sent after each session', 'Works on any classroom device — no hardware'],
+            },
+            {
+              color: '#1a4a3a',
+              icon: '🎯',
+              title: 'In the Clinic',
+              tagline: 'NDIS progress notes generated the moment the session ends. Compliant, timestamped, audit-ready.',
+              pills: [{ val: '1-click', label: 'NDIS notes' }, { val: '100%', label: 'Compliant' }, { val: '0hr', label: 'Admin time' }],
+              img: IMGS.sceneNdis,
+              link: 'NDIS Providers',
+              linkHref: 'mailto:readingbuddies@outcome-ready.com?subject=NDIS',
+              backDesc: 'NDIS Practice Standards–aligned progress notes generated automatically. Providers spend their time in therapy, not paperwork.',
+              bullets: ['Goal-referenced notes — no copy-paste', 'Timestamped & audit-ready from day one', 'Books mapped directly to participant NDIS goals', 'Bulk export for plan reviews & audits'],
+            },
+            {
+              color: '#4a2a7a',
+              icon: '🏠',
+              title: 'At Home',
+              tagline: 'Parent snapshots in plain English, sent automatically after every session. No jargon, no effort.',
+              pills: [{ val: 'Auto', label: 'Parent reports' }, { val: 'Plain', label: 'English only' }, { val: 'Every', label: 'Session' }],
+              img: IMGS.sceneHome,
+              link: 'Parents',
+              linkHref: 'mailto:readingbuddies@outcome-ready.com?subject=Parents',
+              backDesc: 'Parents stay in the loop without needing to understand reading levels. Plain-English snapshots land automatically after every session.',
+              bullets: ['What they practised — in simple language', 'Progress vs. reading age benchmarks', 'What to work on at home this week', 'No app install required for parents'],
+            },
+            {
+              color: '#7a3a1a',
+              icon: '📊',
+              title: 'Across the School',
+              tagline: 'Live literacy dashboard across every classroom. Principals see the full picture — not at term end, right now.',
+              pills: [{ val: 'Live', label: 'Dashboard' }, { val: 'All', label: 'Classrooms' }, { val: 'NAPLAN', label: 'Ready' }],
+              img: IMGS.scenePrincipal,
+              link: 'School Leaders',
+              linkHref: 'mailto:readingbuddies@outcome-ready.com?subject=SchoolLeaders',
+              backDesc: 'Principals see literacy health across every classroom in real time — colour-coded alerts, drill down from school to student in two clicks.',
+              bullets: ['Whole-school literacy dashboard — live', 'Colour-coded: on track / watch / alert', 'Drill down: school → class → student', 'NAPLAN-ready reporting built in'],
+            },
           ].map(c => (
-            <div key={c.title} className="rb-ctx" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 0, padding: 0, overflow: 'hidden' }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={c.img} alt={c.title} style={{ width: '100%', height: 180, objectFit: 'cover' }} />
-              <div style={{ padding: '20px 24px' }}>
-                <div style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
-                  <span style={{ fontSize: '1.6rem', flexShrink: 0 }}>{c.icon}</span>
-                  <div>
-                    <h3 style={{ fontFamily: 'var(--font-head)', fontWeight: 800, fontSize: '1rem', color: 'var(--navy)', marginBottom: 6 }}>{c.title}</h3>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--muted)', lineHeight: 1.6, marginBottom: 10 }}>{c.desc}</p>
-                    <a href="mailto:readingbuddies@outcome-ready.com" className="rb-ctx-link">{c.link} →</a>
+            <div key={c.title} className="rb-ctx-wrap">
+              <div className="rb-ctx-inner">
+                {/* FRONT */}
+                <div className="rb-ctx-front" style={{ border: `1.5px solid ${c.color}` }}>
+                  <div className="rb-ctx-left" style={{ background: c.color }}>
+                    <div>
+                      <div style={{ fontSize: '1.5rem', marginBottom: 8 }}>{c.icon}</div>
+                      <div style={{ fontFamily: 'var(--font-head)', fontWeight: 800, fontSize: '0.95rem', color: '#fff', marginBottom: 10 }}>{c.title}</div>
+                      <div className="rb-ctx-tagline">{c.tagline}</div>
+                    </div>
+                    <div className="rb-ctx-pills">
+                      {c.pills.map(p => (
+                        <div key={p.label} className="rb-ctx-pill">
+                          <span className="rb-ctx-pill-val">{p.val}</span>
+                          <span className="rb-ctx-pill-label">{p.label}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
+                  <div className="rb-ctx-right">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={c.img} alt={c.title} />
+                    <div className="rb-ctx-flip-hint">hover to flip →</div>
+                  </div>
+                </div>
+                {/* BACK */}
+                <div className="rb-ctx-back" style={{ border: `1.5px solid ${c.color}` }}>
+                  <div className="rb-ctx-back-icon">{c.icon}</div>
+                  <h3 className="rb-ctx-back" style={{ fontFamily: 'var(--font-head)', fontWeight: 800, fontSize: '1.05rem', color: 'var(--navy)', marginBottom: 8 }}>{c.title}</h3>
+                  <p className="rb-ctx-back">{c.backDesc}</p>
+                  <ul>
+                    {c.bullets.map(b => <li key={b}>{b}</li>)}
+                  </ul>
+                  <a href={c.linkHref} className="rb-ctx-link">{c.link} →</a>
                 </div>
               </div>
             </div>
