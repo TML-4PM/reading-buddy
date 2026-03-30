@@ -320,14 +320,14 @@ export default function LearnPage() {
       <div className="lb-page">
         {/* Mini nav */}
         <div className="lb-mini-nav">
-          <a href="/" className="lb-back">← Reading Buddy</a>
+          <a href="/" className="lb-back">← Reading Buddies</a>
           <a href="mailto:readingbuddy@outcome-ready.com" className="lb-email-link">Get Full Access ✨</a>
         </div>
 
         {/* Main */}
         <div className="lb-main">
           {/* Title - exact position match */}
-          <h1 className="lb-title">Learning Buddy</h1>
+          <h1 className="lb-title">Reading Buddies</h1>
 
           {/* Tagline + alphabet selector */}
           <div style={{ marginTop: '-10%' }}>
