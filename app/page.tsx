@@ -476,8 +476,8 @@ export default function Home() {
                 {/* BACK */}
                 <div className="rb-ctx-back" style={{ border: `1.5px solid ${c.color}` }}>
                   <div className="rb-ctx-back-icon">{c.icon}</div>
-                  <h3 className="rb-ctx-back" style={{ fontFamily: 'var(--font-head)', fontWeight: 800, fontSize: '1.05rem', color: 'var(--navy)', marginBottom: 8 }}>{c.title}</h3>
-                  <p className="rb-ctx-back">{c.backDesc}</p>
+                  <h3 style={{ fontFamily: 'var(--font-head)', fontWeight: 800, fontSize: '1.05rem', color: 'var(--navy)', marginBottom: 8 }}>{c.title}</h3>
+                  <p style={{ fontSize: '0.85rem', color: 'var(--muted)', lineHeight: 1.65, marginBottom: 16 }}>{c.backDesc}</p>
                   <ul>
                     {c.bullets.map(b => <li key={b}>{b}</li>)}
                   </ul>
