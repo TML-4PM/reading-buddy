@@ -18,7 +18,7 @@ const plans = [
     ],
     missing: ['Parent reports', 'NDIS mode', 'Custom book library', 'Growth charts & benchmarks'],
     cta: 'Get Started Free',
-    href: 'mailto:readingbuddies@outcome-ready.com?subject=Freemium',
+    href: 'mailto:readingbuddy@outcome-ready.com?subject=Freemium',
     featured: false,
     badge: null,
   },
@@ -43,7 +43,7 @@ const plans = [
     ],
     missing: [],
     cta: 'Start Free Trial',
-    href: 'mailto:readingbuddies@outcome-ready.com?subject=Premium+Classroom',
+    href: 'mailto:readingbuddy@outcome-ready.com?subject=Premium+Classroom',
     featured: true,
     badge: '⭐ Most Popular',
   },
@@ -68,7 +68,7 @@ const plans = [
     ],
     missing: [],
     cta: 'Start School Plan',
-    href: 'mailto:readingbuddies@outcome-ready.com?subject=School+Plan',
+    href: 'mailto:readingbuddy@outcome-ready.com?subject=School+Plan',
     featured: false,
     badge: null,
   },
@@ -93,7 +93,7 @@ const plans = [
     ],
     missing: [],
     cta: 'Contact Sales',
-    href: 'mailto:readingbuddies@outcome-ready.com?subject=Enterprise',
+    href: 'mailto:readingbuddy@outcome-ready.com?subject=Enterprise',
     featured: false,
     badge: null,
   },
@@ -109,7 +109,7 @@ export default function Pricing() {
           <Link href="/#features">Features</Link>
           <Link href="/#contexts">Schools & NDIS</Link>
           <Link href="/#contact">Contact</Link>
-          <Link href="mailto:readingbuddies@outcome-ready.com" className="btn-primary">Get Started</Link>
+          <Link href="mailto:readingbuddy@outcome-ready.com" className="btn-primary">Get Started</Link>
         </div>
       </nav>
 
@@ -214,7 +214,7 @@ export default function Pricing() {
       <footer style={{ padding: '2rem', textAlign: 'center', fontSize: '0.85rem', color: '#5a5a5a', borderTop: '1px solid #e8e2d9' }}>
         <p>© 2026 Tech 4 Humanity Pty Ltd · ABN 70 666 271 272 · Built in Australia 🇦🇺</p>
         <p style={{ marginTop: '0.5rem' }}>
-          <a href="mailto:readingbuddies@outcome-ready.com" style={{ color: '#4a7c59' }}>readingbuddies@outcome-ready.com</a>
+          <a href="mailto:readingbuddy@outcome-ready.com" style={{ color: '#4a7c59' }}>readingbuddy@outcome-ready.com</a>
         </p>
       </footer>
     </>
