@@ -198,7 +198,7 @@ function LearningWeblet() {
             <div className="rb-weblet-nav-btns">
               <button className="rb-wnav-btn" onClick={() => goTo((current - 1 + 26) % 26)}>← Previous</button>
               <button className="rb-wnav-btn primary" onClick={() => goTo((current + 1) % 26)}>Next Letter →</button>
-              <a className="rb-wnav-btn amber" href="mailto:readingbuddies@outcome-ready.com">Get Full Access ✨</a>
+              <a className="rb-wnav-btn amber" href="mailto:readingbuddy@outcome-ready.com">Get Full Access ✨</a>
             </div>
           </div>
         </div>
@@ -330,7 +330,7 @@ export default function Home() {
               <div className="rb-section-label">For teachers</div>
               <h2 className="rb-section-title">6 hours back every week. Starting Monday.</h2>
               <p className="rb-section-sub">Marking, levelling, reporting, parent communications — all automated. Reading Buddy gives teachers the data they need, without the admin they dread.</p>
-              <a href="mailto:readingbuddies@outcome-ready.com" style={{ display: 'inline-block', marginTop: 24, fontFamily: 'var(--font-head)', fontWeight: 700, fontSize: '0.9rem', color: 'var(--teal)' }}>Talk to us about your school →</a>
+              <a href="mailto:readingbuddy@outcome-ready.com" style={{ display: 'inline-block', marginTop: 24, fontFamily: 'var(--font-head)', fontWeight: 700, fontSize: '0.9rem', color: 'var(--teal)' }}>Talk to us about your school →</a>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               <AccuracyChart />
@@ -407,7 +407,7 @@ export default function Home() {
               pills: [{ val: '30s', label: 'Session scored' }, { val: '0', label: 'Manual effort' }, { val: 'Real-time', label: 'Reports' }],
               img: IMGS.sceneClassroom,
               link: 'Public & Private Schools',
-              linkHref: 'mailto:readingbuddies@outcome-ready.com?subject=Schools',
+              linkHref: 'mailto:readingbuddy@outcome-ready.com?subject=Schools',
               backDesc: 'Every student scored in every session. Teachers receive six automatic reports — no marking, no clipboards, no levelling kits.',
               bullets: ['WPM, accuracy & prosody scored in 30 seconds', 'Growth tracked against national benchmarks', 'Parent snapshots auto-sent after each session', 'Works on any classroom device — no hardware'],
             },
@@ -419,7 +419,7 @@ export default function Home() {
               pills: [{ val: '1-click', label: 'NDIS notes' }, { val: '100%', label: 'Compliant' }, { val: '0hr', label: 'Admin time' }],
               img: IMGS.sceneNdis,
               link: 'NDIS Providers',
-              linkHref: 'mailto:readingbuddies@outcome-ready.com?subject=NDIS',
+              linkHref: 'mailto:readingbuddy@outcome-ready.com?subject=NDIS',
               backDesc: 'NDIS Practice Standards–aligned progress notes generated automatically. Providers spend their time in therapy, not paperwork.',
               bullets: ['Goal-referenced notes — no copy-paste', 'Timestamped & audit-ready from day one', 'Books mapped directly to participant NDIS goals', 'Bulk export for plan reviews & audits'],
             },
@@ -431,7 +431,7 @@ export default function Home() {
               pills: [{ val: 'Auto', label: 'Parent reports' }, { val: 'Plain', label: 'English only' }, { val: 'Every', label: 'Session' }],
               img: IMGS.sceneHome,
               link: 'Parents',
-              linkHref: 'mailto:readingbuddies@outcome-ready.com?subject=Parents',
+              linkHref: 'mailto:readingbuddy@outcome-ready.com?subject=Parents',
               backDesc: 'Parents stay in the loop without needing to understand reading levels. Plain-English snapshots land automatically after every session.',
               bullets: ['What they practised — in simple language', 'Progress vs. reading age benchmarks', 'What to work on at home this week', 'No app install required for parents'],
             },
@@ -443,7 +443,7 @@ export default function Home() {
               pills: [{ val: 'Live', label: 'Dashboard' }, { val: 'All', label: 'Classrooms' }, { val: 'NAPLAN', label: 'Ready' }],
               img: IMGS.scenePrincipal,
               link: 'School Leaders',
-              linkHref: 'mailto:readingbuddies@outcome-ready.com?subject=SchoolLeaders',
+              linkHref: 'mailto:readingbuddy@outcome-ready.com?subject=SchoolLeaders',
               backDesc: 'Principals see literacy health across every classroom in real time — colour-coded alerts, drill down from school to student in two clicks.',
               bullets: ['Whole-school literacy dashboard — live', 'Colour-coded: on track / watch / alert', 'Drill down: school → class → student', 'NAPLAN-ready reporting built in'],
             },
@@ -551,7 +551,7 @@ export default function Home() {
             <div style={{ fontFamily: 'var(--font-head)', fontWeight: 800, fontSize: '1rem', color: 'var(--navy)', marginBottom: 4 }}>Every competitor locks you into their book series. We don't.</div>
             <div style={{ fontSize: '0.85rem', color: 'var(--muted)', lineHeight: 1.6 }}>Your school has already invested in a reading program. Reading Buddy works with it — not against it. Keep your PM Readers, your Oxford books, your school library. Just add AI.</div>
           </div>
-          <a href="mailto:readingbuddies@outcome-ready.com?subject=Custom+Books" className="rb-btn rb-btn-primary" style={{ whiteSpace: 'nowrap' }}>See how it works →</a>
+          <a href="mailto:readingbuddy@outcome-ready.com?subject=Custom+Books" className="rb-btn rb-btn-primary" style={{ whiteSpace: 'nowrap' }}>See how it works →</a>
         </div>
       </section>
 
@@ -574,7 +574,7 @@ export default function Home() {
               <li><span className="rb-cross">–</span>Parent reports</li>
               <li><span className="rb-cross">–</span>NDIS mode</li>
             </ul>
-            <a href="mailto:readingbuddies@outcome-ready.com?subject=Freemium" className="rb-plan-cta">Get Started Free</a>
+            <a href="mailto:readingbuddy@outcome-ready.com?subject=Freemium" className="rb-plan-cta">Get Started Free</a>
           </div>
           <div className="rb-plan popular">
             <div className="rb-popular-badge">⭐ Most Popular</div>
@@ -616,7 +616,7 @@ export default function Home() {
               <li><span className="rb-check">✓</span>Phone support + onboarding</li>
               <li><span className="rb-check">✓</span>Unlimited data retention</li>
             </ul>
-            <a href="mailto:readingbuddies@outcome-ready.com?subject=Enterprise" className="rb-plan-cta">Contact Sales</a>
+            <a href="mailto:readingbuddy@outcome-ready.com?subject=Enterprise" className="rb-plan-cta">Contact Sales</a>
           </div>
         </div>
       </section>
@@ -629,8 +629,8 @@ export default function Home() {
           <h2 style={{ fontFamily: 'var(--font-head)', fontWeight: 900, fontSize: 'clamp(1.8rem,4vw,2.8rem)', color: '#fff', marginBottom: 12 }}>Start free. Upgrade when it pays for itself.</h2>
           <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem', maxWidth: 480, marginBottom: 32 }}>Try one classroom free. The time saved on reporting alone covers the upgrade.</p>
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', justifyContent: 'center' }}>
-            <a href="mailto:readingbuddies@outcome-ready.com?subject=Free+Trial" className="rb-btn-white">Start free — one classroom</a>
-            <a href="mailto:readingbuddies@outcome-ready.com?subject=Talk+to+Sales" className="rb-btn-white-outline">Talk to Sales</a>
+            <a href="mailto:readingbuddy@outcome-ready.com?subject=Free+Trial" className="rb-btn-white">Start free — one classroom</a>
+            <a href="mailto:readingbuddy@outcome-ready.com?subject=Talk+to+Sales" className="rb-btn-white-outline">Talk to Sales</a>
           </div>
         </div>
       </div>
@@ -646,7 +646,7 @@ export default function Home() {
             </div>
             <p className="rb-footer-about">AI-powered reading intelligence for Australian schools and NDIS providers. Built to replace plastic tubs, clipboards, and hours of weekly admin.</p>
             <div className="rb-footer-contact">
-              ✉️ <a href="mailto:readingbuddies@outcome-ready.com">readingbuddies@outcome-ready.com</a>
+              ✉️ <a href="mailto:readingbuddy@outcome-ready.com">readingbuddy@outcome-ready.com</a>
               <div style={{ fontSize: '0.8rem', marginTop: 6 }}>Tech 4 Humanity Pty Ltd · ABN 70 666 271 272</div>
             </div>
           </div>
@@ -663,10 +663,10 @@ export default function Home() {
           <div className="rb-footer-col">
             <h4>Get Started</h4>
             <ul>
-              <li><a href="mailto:readingbuddies@outcome-ready.com?subject=Free+Trial">Free Trial</a></li>
-              <li><a href="mailto:readingbuddies@outcome-ready.com?subject=Premium">Premium Classroom</a></li>
+              <li><a href="mailto:readingbuddy@outcome-ready.com?subject=Free+Trial">Free Trial</a></li>
+              <li><a href="mailto:readingbuddy@outcome-ready.com?subject=Premium">Premium Classroom</a></li>
               <li><a href="/signup?plan=school">School Plan</a></li>
-              <li><a href="mailto:readingbuddies@outcome-ready.com?subject=Enterprise">Enterprise</a></li>
+              <li><a href="mailto:readingbuddy@outcome-ready.com?subject=Enterprise">Enterprise</a></li>
             </ul>
           </div>
           <div className="rb-footer-col">
