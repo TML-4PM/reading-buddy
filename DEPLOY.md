@@ -135,3 +135,9 @@ UPDATE cap_secrets SET value = '<new_pat>' WHERE key = 'GITHUB_PAT';
 | `app/layout.tsx` | Metadata, favicon, fonts |
 | `public/favicon.webp` | AHC droid head (from Supabase storage) |
 | `public/droid.png` | Droid mascot used in hero + weblet |
+## Deploy 2026-03-30T08:32:53Z
+- app/read/page.tsx — AI running record capture UI
+- app/api/read/presign/route.ts — S3 pre-signed upload
+- app/api/read/process/route.ts — Lambda async trigger
+- AWS SDK deps added to package.json
+
