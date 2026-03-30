@@ -108,104 +108,231 @@ function ClassHealthChart() {
   )
 }
 
-const LETTERS = [
-  { l: 'A', word: 'Apple 🍎', emoji: '🍎', caption: 'A is for Apple', img: 'A' },
-  { l: 'B', word: 'Book 📚',  emoji: '📚', caption: 'B is for Book',  img: 'B' },
-  { l: 'C', word: 'Cat 🐱',   emoji: '🐱', caption: 'C is for Cat',   img: 'C' },
-  { l: 'D', word: 'Dog 🐶',   emoji: '🐶', caption: 'D is for Dog',   img: 'D' },
-  { l: 'E', word: 'Elephant 🐘', emoji: '🐘', caption: 'E is for Elephant', img: null },
-  { l: 'F', word: 'Fish 🐟',  emoji: '🐟', caption: 'F is for Fish',  img: null },
-  { l: 'G', word: 'Giraffe 🦒', emoji: '🦒', caption: 'G is for Giraffe', img: null },
-  { l: 'H', word: 'House 🏠', emoji: '🏠', caption: 'H is for House', img: null },
-  { l: 'I', word: 'Ice Cream 🍦', emoji: '🍦', caption: 'I is for Ice Cream', img: null },
-  { l: 'J', word: 'Jungle 🌴', emoji: '🌴', caption: 'J is for Jungle', img: null },
-  { l: 'K', word: 'Kite 🪁',  emoji: '🪁', caption: 'K is for Kite',  img: null },
-  { l: 'L', word: 'Lion 🦁',  emoji: '🦁', caption: 'L is for Lion',  img: null },
-  { l: 'M', word: 'Moon 🌙',  emoji: '🌙', caption: 'M is for Moon',  img: null },
-  { l: 'N', word: 'Nest 🪹',  emoji: '🪹', caption: 'N is for Nest',  img: null },
-  { l: 'O', word: 'Owl 🦉',   emoji: '🦉', caption: 'O is for Owl',   img: null },
-  { l: 'P', word: 'Penguin 🐧', emoji: '🐧', caption: 'P is for Penguin', img: null },
-  { l: 'Q', word: 'Queen 👑', emoji: '👑', caption: 'Q is for Queen', img: null },
-  { l: 'R', word: 'Rainbow 🌈', emoji: '🌈', caption: 'R is for Rainbow', img: null },
-  { l: 'S', word: 'Star ⭐',  emoji: '⭐', caption: 'S is for Star',  img: null },
-  { l: 'T', word: 'Tiger 🐯', emoji: '🐯', caption: 'T is for Tiger', img: null },
-  { l: 'U', word: 'Umbrella ☂️', emoji: '☂️', caption: 'U is for Umbrella', img: null },
-  { l: 'V', word: 'Volcano 🌋', emoji: '🌋', caption: 'V is for Volcano', img: null },
-  { l: 'W', word: 'Whale 🐋', emoji: '🐋', caption: 'W is for Whale', img: null },
-  { l: 'X', word: 'Xylophone 🎵', emoji: '🎵', caption: 'X is for Xylophone', img: null },
-  { l: 'Y', word: 'Yak 🦙',   emoji: '🦙', caption: 'Y is for Yak',   img: null },
-  { l: 'Z', word: 'Zebra 🦓', emoji: '🦓', caption: 'Z is for Zebra', img: null },
-]
+// ── Reading Buddies buddy SVGs ──────────────────────────────────────────────
+const BUDDY_SVGS: Record<string, string> = {
+  spark: `<svg viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg"><rect width="72" height="72" fill="#FFF3DC"/><ellipse cx="36" cy="54" rx="18" ry="14" fill="#E8762B"/><circle cx="36" cy="32" r="18" fill="#E8762B"/><polygon points="20,20 14,8 28,18" fill="#E8762B"/><polygon points="52,20 58,8 44,18" fill="#E8762B"/><polygon points="21,19 15,10 27,18" fill="#F5A07A"/><polygon points="51,19 57,10 45,18" fill="#F5A07A"/><ellipse cx="36" cy="36" rx="11" ry="9" fill="#FDE8C8"/><circle cx="30" cy="29" r="3" fill="white"/><circle cx="42" cy="29" r="3" fill="white"/><circle cx="31" cy="29" r="1.5" fill="#1A2340"/><circle cx="43" cy="29" r="1.5" fill="#1A2340"/><circle cx="31.5" cy="28.5" r="0.6" fill="white"/><circle cx="43.5" cy="28.5" r="0.6" fill="white"/><ellipse cx="36" cy="35" rx="2.5" ry="1.8" fill="#1A2340"/><path d="M32 38 Q36 42 40 38" stroke="#1A2340" stroke-width="1.2" fill="none" stroke-linecap="round"/><circle cx="25" cy="34" r="3.5" fill="#F5A07A" opacity="0.5"/><circle cx="47" cy="34" r="3.5" fill="#F5A07A" opacity="0.5"/></svg>`,
+  luna: `<svg viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg"><rect width="72" height="72" fill="#EAF5FF"/><ellipse cx="36" cy="30" rx="20" ry="18" fill="#8B7EC8"/><path d="M20 44 Q14 52 18 60 Q22 52 24 46" fill="#8B7EC8"/><path d="M27 48 Q24 58 28 64 Q30 54 30 48" fill="#8B7EC8"/><path d="M36 50 Q36 60 36 66 Q38 58 38 50" fill="#8B7EC8"/><path d="M45 48 Q48 58 44 64 Q44 54 42 48" fill="#8B7EC8"/><path d="M52 44 Q58 52 54 60 Q50 52 48 46" fill="#8B7EC8"/><ellipse cx="36" cy="32" rx="13" ry="11" fill="#BEB3E8"/><circle cx="29" cy="26" r="4" fill="white"/><circle cx="43" cy="26" r="4" fill="white"/><circle cx="30" cy="26" r="2" fill="#1A2340"/><circle cx="44" cy="26" r="2" fill="#1A2340"/><circle cx="30.7" cy="25.3" r="0.8" fill="white"/><circle cx="44.7" cy="25.3" r="0.8" fill="white"/><path d="M30 35 Q36 40 42 35" stroke="#1A2340" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg>`,
+  pip: `<svg viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg"><rect width="72" height="72" fill="#F0F8E8"/><ellipse cx="36" cy="54" rx="16" ry="13" fill="#C4904A"/><circle cx="36" cy="32" r="18" fill="#C4904A"/><circle cx="20" cy="18" r="7" fill="#C4904A"/><circle cx="52" cy="18" r="7" fill="#C4904A"/><circle cx="20" cy="18" r="4" fill="#E8B070"/><circle cx="52" cy="18" r="4" fill="#E8B070"/><ellipse cx="36" cy="37" rx="10" ry="7" fill="#E8B070"/><circle cx="29" cy="29" r="3.5" fill="white"/><circle cx="43" cy="29" r="3.5" fill="white"/><circle cx="30" cy="29" r="1.8" fill="#1A2340"/><circle cx="44" cy="29" r="1.8" fill="#1A2340"/><circle cx="30.7" cy="28.3" r="0.7" fill="white"/><circle cx="44.7" cy="28.3" r="0.7" fill="white"/><ellipse cx="36" cy="34" rx="2.5" ry="2" fill="#1A2340"/><path d="M31 39 Q36 43 41 39" stroke="#1A2340" stroke-width="1.2" fill="none" stroke-linecap="round"/><circle cx="24" cy="36" r="4" fill="#D4704A" opacity="0.35"/><circle cx="48" cy="36" r="4" fill="#D4704A" opacity="0.35"/></svg>`,
+  nova: `<svg viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg"><rect width="72" height="72" fill="#FFF0F8"/><ellipse cx="22" cy="30" rx="15" ry="18" fill="#F06090" opacity="0.85" transform="rotate(-20,22,30)"/><ellipse cx="50" cy="30" rx="15" ry="18" fill="#F06090" opacity="0.85" transform="rotate(20,50,30)"/><ellipse cx="20" cy="46" rx="11" ry="12" fill="#C040A0" opacity="0.7" transform="rotate(15,20,46)"/><ellipse cx="52" cy="46" rx="11" ry="12" fill="#C040A0" opacity="0.7" transform="rotate(-15,52,46)"/><circle cx="22" cy="26" r="5" fill="white" opacity="0.6"/><circle cx="50" cy="26" r="5" fill="white" opacity="0.6"/><ellipse cx="36" cy="36" rx="5" ry="14" fill="#7A3090"/><circle cx="36" cy="20" r="7" fill="#7A3090"/><circle cx="33" cy="18" r="2.5" fill="white"/><circle cx="39" cy="18" r="2.5" fill="white"/><circle cx="33.5" cy="18" r="1.2" fill="#1A2340"/><circle cx="39.5" cy="18" r="1.2" fill="#1A2340"/><path d="M32 23 Q36 27 40 23" stroke="#1A2340" stroke-width="1" fill="none" stroke-linecap="round"/><path d="M33 14 Q28 8 25 5" stroke="#7A3090" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M39 14 Q44 8 47 5" stroke="#7A3090" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="25" cy="5" r="2" fill="#F06090"/><circle cx="47" cy="5" r="2" fill="#F06090"/></svg>`,
+}
 
-function LearningWeblet() {
-  const [current, setCurrent] = useState(0)
-  const [imgErr, setImgErr] = useState(false)
-  const d = LETTERS[current]
-  const pct = Math.round(((current + 1) / 26) * 100)
-  const goTo = (i: number) => { setCurrent(i); setImgErr(false) }
+// ── Book cover SVGs ─────────────────────────────────────────────────────────
+function coverSVG(key: string, bg: string): string {
+  const covers: Record<string, string> = {
+    cat: `<svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="130" fill="${bg}"/><rect width="200" height="70" fill="#87CEEB" opacity="0.4"/><rect x="20" y="90" width="160" height="16" rx="4" fill="#E8763C" opacity="0.8"/><ellipse cx="100" cy="82" rx="22" ry="16" fill="#F5A623"/><circle cx="100" cy="60" r="18" fill="#F5A623"/><polygon points="86,48 82,36 94,46" fill="#F5A623"/><polygon points="114,48 118,36 106,46" fill="#F5A623"/><polygon points="87,47 84,38 93,45" fill="#FFD0B0"/><polygon points="113,47 116,38 107,45" fill="#FFD0B0"/><ellipse cx="100" cy="36" rx="11" ry="9" fill="#FDE8C8"/><circle cx="94" cy="57" r="4" fill="white"/><circle cx="106" cy="57" r="4" fill="white"/><circle cx="95" cy="57" r="2" fill="#1A2340"/><circle cx="107" cy="57" r="2" fill="#1A2340"/><circle cx="95.7" cy="56.3" r="0.8" fill="white"/><circle cx="107.7" cy="56.3" r="0.8" fill="white"/><ellipse cx="100" cy="64" rx="1.5" ry="1.2" fill="#1A2340"/><path d="M95 67 Q100 71 105 67" stroke="#1A2340" stroke-width="1" fill="none" stroke-linecap="round"/><line x1="80" y1="63" x2="95" y2="64" stroke="#1A2340" stroke-width="0.8" opacity="0.6"/><line x1="80" y1="66" x2="95" y2="65" stroke="#1A2340" stroke-width="0.8" opacity="0.6"/><line x1="120" y1="63" x2="105" y2="64" stroke="#1A2340" stroke-width="0.8" opacity="0.6"/><line x1="120" y1="66" x2="105" y2="65" stroke="#1A2340" stroke-width="0.8" opacity="0.6"/><path d="M122 82 Q140 70 136 55" stroke="#F5A623" stroke-width="6" fill="none" stroke-linecap="round"/><circle cx="28" cy="20" r="10" fill="#FFD700" opacity="0.9"/></svg>`,
+    bee: `<svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="130" fill="${bg}"/><rect width="200" height="60" fill="#87CEEB" opacity="0.5"/><circle cx="30" cy="105" r="12" fill="#FFB3C6"/><circle cx="30" cy="93" r="6" fill="#FFD700"/><circle cx="170" cy="108" r="10" fill="#FFB3C6"/><circle cx="170" cy="97" r="5" fill="#FFD700"/><rect x="0" y="112" width="200" height="18" rx="2" fill="#6DBF67"/><ellipse cx="100" cy="65" rx="26" ry="18" fill="#FFD700"/><rect x="80" y="56" width="10" height="18" rx="2" fill="#1A2340" opacity="0.7"/><rect x="96" y="56" width="10" height="18" rx="2" fill="#1A2340" opacity="0.7"/><rect x="112" y="56" width="10" height="18" rx="2" fill="#1A2340" opacity="0.7"/><ellipse cx="90" cy="52" rx="18" ry="12" fill="white" opacity="0.75" transform="rotate(-20,90,52)"/><ellipse cx="110" cy="52" rx="18" ry="12" fill="white" opacity="0.75" transform="rotate(20,110,52)"/><circle cx="124" cy="65" r="14" fill="#FFD700"/><circle cx="120" cy="61" r="3.5" fill="white"/><circle cx="129" cy="61" r="3.5" fill="white"/><circle cx="120.5" cy="61" r="1.8" fill="#1A2340"/><circle cx="129.5" cy="61" r="1.8" fill="#1A2340"/><path d="M118 67 Q124 72 130 67" stroke="#1A2340" stroke-width="1.2" fill="none" stroke-linecap="round"/><polygon points="74,60 74,70 66,65" fill="#E8762B"/></svg>`,
+    duck: `<svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="130" fill="${bg}"/><rect width="200" height="65" fill="#87CEEB" opacity="0.5"/><ellipse cx="100" cy="110" rx="60" ry="10" fill="#5BB8D4" opacity="0.4"/><ellipse cx="100" cy="112" rx="35" ry="13" fill="#66BB6A"/><ellipse cx="96" cy="88" rx="30" ry="22" fill="#F5C842"/><ellipse cx="92" cy="90" rx="18" ry="12" fill="#E8A820" opacity="0.6"/><rect x="110" y="68" width="16" height="22" rx="8" fill="#F5C842"/><circle cx="120" cy="62" r="16" fill="#2E7D32"/><ellipse cx="136" cy="64" rx="9" ry="5" fill="#FF8C00"/><line x1="127" y1="64" x2="145" y2="64" stroke="#CC6600" stroke-width="1"/><circle cx="124" cy="59" r="4" fill="white"/><circle cx="125" cy="59" r="2" fill="#1A2340"/><circle cx="125.7" cy="58.3" r="0.8" fill="white"/><ellipse cx="80" cy="108" rx="12" ry="5" fill="#FF8C00" opacity="0.9"/><ellipse cx="104" cy="109" rx="12" ry="5" fill="#FF8C00" opacity="0.9"/></svg>`,
+    frog: `<svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="130" fill="${bg}"/><ellipse cx="100" cy="118" rx="90" ry="16" fill="#5BB8D4" opacity="0.4"/><ellipse cx="100" cy="112" rx="35" ry="13" fill="#66BB6A"/><ellipse cx="100" cy="88" rx="30" ry="22" fill="#4CAF50"/><ellipse cx="68" cy="100" rx="14" ry="8" fill="#4CAF50" transform="rotate(-20,68,100)"/><ellipse cx="132" cy="100" rx="14" ry="8" fill="#4CAF50" transform="rotate(20,132,100)"/><circle cx="100" cy="68" r="22" fill="#4CAF50"/><circle cx="87" cy="54" r="10" fill="#81C784"/><circle cx="113" cy="54" r="10" fill="#81C784"/><circle cx="87" cy="54" r="6" fill="white"/><circle cx="113" cy="54" r="6" fill="white"/><circle cx="88" cy="54" r="3.5" fill="#1A2340"/><circle cx="114" cy="54" r="3.5" fill="#1A2340"/><circle cx="89" cy="53" r="1.2" fill="white"/><circle cx="115" cy="53" r="1.2" fill="white"/><path d="M80 72 Q100 84 120 72" stroke="#1A2340" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`,
+    robot: `<svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="130" fill="${bg}"/><rect x="0" y="100" width="200" height="30" fill="#E8E8F0" opacity="0.5"/><rect x="70" y="65" width="60" height="50" rx="8" fill="#5BB8D4"/><rect x="80" y="75" width="40" height="28" rx="4" fill="#3A9AB8"/><circle cx="90" cy="84" r="4" fill="#FF6B6B"/><circle cx="100" cy="84" r="4" fill="#FFD700"/><circle cx="110" cy="84" r="4" fill="#6BFF6B"/><rect x="83" y="90" width="34" height="10" rx="3" fill="#1A2340" opacity="0.8"/><rect x="42" y="68" width="28" height="12" rx="6" fill="#5BB8D4"/><rect x="130" y="68" width="28" height="12" rx="6" fill="#5BB8D4"/><rect x="68" y="30" width="64" height="38" rx="12" fill="#5BB8D4"/><rect x="98" y="18" width="4" height="14" rx="2" fill="#3A9AB8"/><circle cx="100" cy="16" r="5" fill="#FF6B6B"/><rect x="78" y="38" width="18" height="14" rx="4" fill="#1A2340"/><rect x="104" y="38" width="18" height="14" rx="4" fill="#1A2340"/><rect x="80" y="40" width="14" height="10" rx="3" fill="#00BFFF" opacity="0.9"/><rect x="106" y="40" width="14" height="10" rx="3" fill="#00BFFF" opacity="0.9"/><circle cx="87" cy="45" r="3" fill="white" opacity="0.7"/><circle cx="113" cy="45" r="3" fill="white" opacity="0.7"/><rect x="84" y="58" width="32" height="6" rx="3" fill="#3A9AB8"/></svg>`,
+    dino: `<svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="130" fill="${bg}"/><rect x="0" y="108" width="200" height="22" fill="#6DBF67" opacity="0.6"/><ellipse cx="90" cy="88" rx="42" ry="26" fill="#66BB6A"/><ellipse cx="90" cy="90" rx="28" ry="18" fill="#A5D6A7" opacity="0.7"/><rect x="110" y="58" width="22" height="34" rx="11" fill="#66BB6A"/><ellipse cx="128" cy="52" rx="26" ry="18" fill="#66BB6A"/><ellipse cx="150" cy="54" rx="12" ry="8" fill="#4CAF50"/><circle cx="132" cy="46" r="6" fill="white"/><circle cx="133" cy="46" r="3.5" fill="#1A2340"/><circle cx="134" cy="45" r="1.2" fill="white"/><polygon points="100,62 104,52 108,62" fill="#4CAF50"/><polygon points="112,56 116,46 120,56" fill="#4CAF50"/><polygon points="124,50 128,40 132,50" fill="#4CAF50"/><rect x="58" y="110" width="18" height="18" rx="6" fill="#78909C"/><rect x="80" y="112" width="18" height="16" rx="6" fill="#4CAF50"/><rect x="102" y="112" width="18" height="16" rx="6" fill="#4CAF50"/><circle cx="24" cy="22" r="12" fill="#FFD700" opacity="0.85"/></svg>`,
+    wave: `<svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="130" fill="${bg}"/><rect width="200" height="60" fill="#87CEEB" opacity="0.5"/><circle cx="160" cy="22" r="14" fill="#FFD700" opacity="0.9"/><path d="M0 75 Q25 65 50 75 Q75 85 100 75 Q125 65 150 75 Q175 85 200 75 L200 130 L0 130 Z" fill="#1E88E5" opacity="0.8"/><path d="M0 88 Q25 78 50 88 Q75 98 100 88 Q125 78 150 88 Q175 98 200 88 L200 130 L0 130 Z" fill="#1565C0" opacity="0.7"/><ellipse cx="100" cy="72" rx="36" ry="9" fill="#FF6B35" transform="rotate(-8,100,72)"/><ellipse cx="104" cy="63" rx="9" ry="11" fill="#FFB74D"/><circle cx="104" cy="50" r="10" fill="#FFDAB9"/><circle cx="100" cy="49" r="2" fill="#1A2340"/><circle cx="108" cy="49" r="2" fill="#1A2340"/><path d="M100 54 Q104 57 108 54" stroke="#1A2340" stroke-width="1" fill="none" stroke-linecap="round"/></svg>`,
+    space: `<svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="130" fill="${bg}"/><rect width="200" height="130" fill="#0D1B4B" opacity="0.85"/><circle cx="20" cy="15" r="1.5" fill="white" opacity="0.9"/><circle cx="80" cy="20" r="1.5" fill="white" opacity="0.9"/><circle cx="160" cy="22" r="2" fill="white" opacity="0.9"/><circle cx="10" cy="90" r="1.5" fill="white" opacity="0.8"/><circle cx="160" cy="45" r="20" fill="#8B7EC8"/><ellipse cx="160" cy="45" rx="30" ry="8" fill="#C4B8F0" opacity="0.5"/><rect x="85" y="40" width="30" height="55" rx="6" fill="#E8E8F0"/><polygon points="85,40 115,40 100,18" fill="#FF6B6B"/><circle cx="100" cy="55" r="10" fill="#87CEEB"/><circle cx="100" cy="55" r="7" fill="#5BB8D4"/><circle cx="100" cy="53" r="5" fill="#FFDAB9"/><circle cx="98" cy="51.5" r="1.2" fill="#1A2340"/><circle cx="102" cy="51.5" r="1.2" fill="#1A2340"/><polygon points="85,75 72,88 85,88" fill="#FF6B6B"/><polygon points="115,75 128,88 115,88" fill="#FF6B6B"/><path d="M88 95 Q100 115 112 95 Q106 108 100 120 Q94 108 88 95Z" fill="#FF8C00" opacity="0.9"/></svg>`,
+    elephant: `<svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="130" fill="${bg}"/><rect x="0" y="108" width="200" height="22" fill="#A5D6A7" opacity="0.5"/><ellipse cx="94" cy="88" rx="46" ry="32" fill="#90A4AE"/><ellipse cx="54" cy="76" rx="22" ry="26" fill="#78909C"/><ellipse cx="57" cy="78" rx="14" ry="18" fill="#FFCDD2" opacity="0.6"/><circle cx="78" cy="72" r="32" fill="#90A4AE"/><circle cx="63" cy="64" r="6" fill="white"/><circle cx="64" cy="64" r="3.5" fill="#1A2340"/><circle cx="64.8" cy="63.2" r="1.2" fill="white"/><path d="M62 82 Q50 95 55 112 Q60 118 65 110 Q62 98 70 88" fill="#90A4AE"/><path d="M68 84 Q58 92 54 100" stroke="#FFF9C4" stroke-width="4" fill="none" stroke-linecap="round"/><rect x="58" y="110" width="18" height="18" rx="6" fill="#78909C"/><rect x="80" y="112" width="18" height="16" rx="6" fill="#78909C"/><rect x="102" y="112" width="18" height="16" rx="6" fill="#78909C"/><rect x="122" y="110" width="18" height="18" rx="6" fill="#78909C"/><circle cx="175" cy="18" r="12" fill="#FFD700" opacity="0.85"/></svg>`,
+  }
+  return covers[key] || covers['cat']
+}
+
+// ── Book data ────────────────────────────────────────────────────────────────
+interface BookEntry { title: string; level: string; levelColor: string; bg: string; coverKey: string; featured?: boolean }
+type LevelMap = Record<string, BookEntry[]>
+type BookMap  = Record<string, LevelMap>
+
+const RB_BOOKS: BookMap = {
+  phonics: {
+    prep: [
+      { title:'Cat Sat on a Mat',  level:'Level 1', levelColor:'#F0714A', bg:'#FFF0ED', coverKey:'cat',  featured:false },
+      { title:'The Big Bad Bug',   level:'Level 1', levelColor:'#F5A623', bg:'#FFFBEA', coverKey:'bee',  featured:false },
+      { title:'Duck in the Mud',   level:'Level 2', levelColor:'#4CAF50', bg:'#F0FFF0', coverKey:'duck', featured:true  },
+      { title:'Hop, Frog, Hop!',   level:'Level 1', levelColor:'#5BB8D4', bg:'#EDF9FF', coverKey:'frog', featured:false },
+    ],
+    y1: [
+      { title:'The Ship Trip',     level:'Level 3', levelColor:'#5BB8D4', bg:'#EDF9FF', coverKey:'wave',  featured:false },
+      { title:'Shout it Out!',     level:'Level 4', levelColor:'#2BB5A0', bg:'#E8FBF8', coverKey:'robot', featured:true  },
+      { title:'Night Light Flight',level:'Level 3', levelColor:'#8B7EC8', bg:'#F2EEFF', coverKey:'space', featured:false },
+      { title:'Climbing Higher',   level:'Level 4', levelColor:'#FF9800', bg:'#FFF8EC', coverKey:'frog',  featured:false },
+    ],
+    y2: [
+      { title:'Space Explorer',    level:'Level 5', levelColor:'#8B7EC8', bg:'#F2EEFF', coverKey:'space', featured:true  },
+      { title:'Dinosaur Dreams',   level:'Level 5', levelColor:'#4CAF50', bg:'#F0FFF0', coverKey:'dino',  featured:false },
+      { title:'The Eruption',      level:'Level 6', levelColor:'#F0714A', bg:'#FFF0ED', coverKey:'wave',  featured:false },
+      { title:'Deep Sea Dash',     level:'Level 6', levelColor:'#5BB8D4', bg:'#EDF9FF', coverKey:'robot', featured:false },
+    ],
+  },
+  stories: {
+    prep: [
+      { title:'My Magic Garden',   level:'Level 1', levelColor:'#4CAF50', bg:'#F0FFF0', coverKey:'frog',  featured:true  },
+      { title:'Rainbow Pony',      level:'Level 1', levelColor:'#E91E8C', bg:'#FFF0F8', coverKey:'dino',  featured:false },
+      { title:'Pizza for Pets',    level:'Level 2', levelColor:'#FF9800', bg:'#FFF8EC', coverKey:'robot', featured:false },
+      { title:'The Big Show',      level:'Level 2', levelColor:'#8B7EC8', bg:'#F2EEFF', coverKey:'cat',   featured:false },
+    ],
+    y1: [
+      { title:'Robot Best Friend', level:'Level 3', levelColor:'#5BB8D4', bg:'#EDF9FF', coverKey:'robot', featured:true  },
+      { title:'Lost on an Island', level:'Level 3', levelColor:'#4CAF50', bg:'#F0FFF0', coverKey:'wave',  featured:false },
+      { title:'Super Granny',      level:'Level 4', levelColor:'#F0714A', bg:'#FFF0ED', coverKey:'dino',  featured:false },
+      { title:'The Friendly Dragon',level:'Level 4',levelColor:'#F5A623', bg:'#FFFBEA', coverKey:'space', featured:false },
+    ],
+    y2: [
+      { title:'Around the World',  level:'Level 5', levelColor:'#5BB8D4', bg:'#EDF9FF', coverKey:'dino',  featured:true  },
+      { title:'The Mystery Mask',  level:'Level 5', levelColor:'#8B7EC8', bg:'#F2EEFF', coverKey:'space', featured:false },
+      { title:'The Last Kick',     level:'Level 6', levelColor:'#4CAF50', bg:'#F0FFF0', coverKey:'robot', featured:false },
+      { title:'Rock Star Kid',     level:'Level 6', levelColor:'#F5A623', bg:'#FFFBEA', coverKey:'wave',  featured:false },
+    ],
+  },
+  rhymes: {
+    prep: [
+      { title:'Rain Rain Come Again',level:'Level 1',levelColor:'#5BB8D4',bg:'#EDF9FF',coverKey:'duck',featured:true  },
+      { title:'Twinkle Twinkle AI', level:'Level 1',levelColor:'#F5A623',bg:'#FFFBEA',coverKey:'cat',  featured:false },
+      { title:'Baa Baa Smart Sheep',level:'Level 1',levelColor:'#F0714A',bg:'#FFF0ED',coverKey:'bee',  featured:false },
+      { title:'The Silly Song',     level:'Level 2',levelColor:'#4CAF50',bg:'#F0FFF0',coverKey:'frog', featured:false },
+    ],
+    y1: [
+      { title:"Rhyme Time Monsters",level:'Level 3',levelColor:'#FF9800',bg:'#FFF8EC',coverKey:'frog', featured:true  },
+      { title:'Flowers in Rhyme',   level:'Level 3',levelColor:'#E91E8C',bg:'#FFF0F8',coverKey:'wave', featured:false },
+      { title:"The Lion's Poem",    level:'Level 4',levelColor:'#F5A623',bg:'#FFFBEA',coverKey:'cat',  featured:false },
+      { title:'Colour Poems',       level:'Level 4',levelColor:'#5BB8D4',bg:'#EDF9FF',coverKey:'dino', featured:false },
+    ],
+    y2: [
+      { title:'Aussie Rhyme Time',  level:'Level 5',levelColor:'#4CAF50',bg:'#F0FFF0',coverKey:'wave',    featured:true  },
+      { title:'Surf School Poems',  level:'Level 5',levelColor:'#5BB8D4',bg:'#EDF9FF',coverKey:'space',   featured:false },
+      { title:'Bedtime Verse',      level:'Level 6',levelColor:'#8B7EC8',bg:'#F2EEFF',coverKey:'dino',    featured:false },
+      { title:'The Spinning Poem',  level:'Level 6',levelColor:'#F0714A',bg:'#FFF0ED',coverKey:'elephant',featured:false },
+    ],
+  },
+  facts: {
+    prep: [
+      { title:'Why Elephants Are Big',level:'Level 1',levelColor:'#FF9800',bg:'#FFF8EC',coverKey:'elephant',featured:true  },
+      { title:'How Stars Shine',      level:'Level 1',levelColor:'#F5A623',bg:'#FFFBEA',coverKey:'space',   featured:false },
+      { title:'Where Waves Come From',level:'Level 2',levelColor:'#5BB8D4',bg:'#EDF9FF',coverKey:'duck',    featured:false },
+      { title:'Seeds and Trees',      level:'Level 2',levelColor:'#4CAF50',bg:'#F0FFF0',coverKey:'bee',     featured:false },
+    ],
+    y1: [
+      { title:'Dinos Were Real!',   level:'Level 3',levelColor:'#4CAF50',bg:'#F0FFF0',coverKey:'dino',    featured:true  },
+      { title:'Our Planet Spins',   level:'Level 3',levelColor:'#5BB8D4',bg:'#EDF9FF',coverKey:'elephant',featured:false },
+      { title:'Bees Build Hexagons',level:'Level 4',levelColor:'#F5A623',bg:'#FFFBEA',coverKey:'bee',     featured:false },
+      { title:'The Water Cycle',    level:'Level 4',levelColor:'#5BB8D4',bg:'#EDF9FF',coverKey:'cat',     featured:false },
+    ],
+    y2: [
+      { title:'Telescopes and Space',level:'Level 5',levelColor:'#8B7EC8',bg:'#F2EEFF',coverKey:'space',   featured:true  },
+      { title:'Tiny Living Things', level:'Level 5',levelColor:'#4CAF50',bg:'#F0FFF0',coverKey:'elephant',featured:false },
+      { title:'How Lightning Works',level:'Level 6',levelColor:'#F5A623',bg:'#FFFBEA',coverKey:'dino',    featured:false },
+      { title:'Magnets and Force',  level:'Level 6',levelColor:'#F0714A',bg:'#FFF0ED',coverKey:'robot',   featured:false },
+    ],
+  },
+}
+
+// ── Reading Buddies weblet ───────────────────────────────────────────────────
+function ReadingBuddiesWeblet() {
+  const [buddy, setBuddy]   = useState<'spark'|'luna'|'pip'|'nova'>('spark')
+  const [level, setLevel]   = useState<'prep'|'y1'|'y2'>('prep')
+  const [btype, setBtype]   = useState<'phonics'|'stories'|'rhymes'|'facts'>('phonics')
+
+  const buddyMeta = {
+    spark: { label:'Spark', color:'#E8762B' },
+    luna:  { label:'Luna',  color:'#8B7EC8' },
+    pip:   { label:'Pip',   color:'#C4904A' },
+    nova:  { label:'Nova',  color:'#F06090' },
+  }
+
+  const typeColors: Record<string, string> = {
+    phonics:'#F0714A', stories:'#8B7EC8', rhymes:'#5BB8D4', facts:'#F5A623'
+  }
+
+  const books: BookEntry[] = RB_BOOKS[btype]?.[level] || []
+
+  const bm = buddyMeta[buddy]
 
   return (
     <div className="rb-weblet-section" id="try-it">
       <div className="rb-weblet-inner">
         <div className="rb-weblet-header">
-          <div className="rb-weblet-badge">✨ Interactive Learning Weblet</div>
-          <h2>Try Reading Buddy with your child</h2>
-          <p>A preview of the student-facing experience — simple, playful, always encouraging.</p>
+          <div className="rb-weblet-badge">📖 AI Books · Kindy to Year 2</div>
+          <h2>Read with your Reading Buddy</h2>
+          <p>Pick your buddy, choose your level, find a book — and read together.</p>
         </div>
         <div className="rb-weblet-app">
           <div className="rb-weblet-topbar">
             <div className="rb-dots"><div className="rb-dot rb-dot-r"/><div className="rb-dot rb-dot-y"/><div className="rb-dot rb-dot-g"/></div>
-            <div className="rb-weblet-topbar-logo">📖 Reading Buddy — Student View</div>
+            <div className="rb-weblet-topbar-logo">📖 Reading Buddies — Student View</div>
             <div className="rb-weblet-topbar-tag">LIVE DEMO</div>
           </div>
           <div className="rb-weblet-body">
-            <div className="rb-weblet-intro">
-              <h3>Learning Buddy</h3>
-              <p>Click a letter to explore — each one is an adventure!</p>
-              <div className="rb-brain-fact">🧠✨ Your brain is like a superhero when you read!</div>
+
+            {/* Title */}
+            <div style={{ textAlign:'center', marginBottom:20 }}>
+              <div style={{ fontFamily:'Fraunces,serif', fontWeight:900, fontSize:'1.6rem', color:'#1a2e1f' }}>Reading Buddies</div>
+              <div style={{ fontSize:'0.8rem', color:'#4a6b52', marginTop:4 }}>AI books for Kindy to Year 2</div>
             </div>
-            {/* Droid mascot */}
-            <div style={{ textAlign: 'center', marginBottom: 16 }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={IMGS.droid} alt="Reading Buddy AI Droid" style={{ height: 90, width: 'auto', margin: '0 auto', display: 'inline-block' }} />
+
+            {/* Buddy picker */}
+            <div style={{ marginBottom:16 }}>
+              <div style={{ fontSize:'0.65rem', fontWeight:800, letterSpacing:'1.2px', textTransform:'uppercase', color:'#4a6b52', textAlign:'center', marginBottom:10 }}>Pick your buddy</div>
+              <div style={{ display:'flex', justifyContent:'center', gap:14 }}>
+                {(['spark','luna','pip','nova'] as const).map(b => (
+                  <div key={b} onClick={() => setBuddy(b)} style={{ cursor:'pointer', display:'flex', flexDirection:'column', alignItems:'center', gap:5 }}>
+                    <div style={{ width:56, height:56, borderRadius:'50%', overflow:'hidden', border:`3px solid ${buddy===b ? buddyMeta[b].color : '#ddd'}`, boxShadow: buddy===b ? `0 0 0 3px ${buddyMeta[b].color}33` : 'none', transition:'all 0.2s' }}
+                      dangerouslySetInnerHTML={{ __html: BUDDY_SVGS[b] }} />
+                    <span style={{ fontSize:'0.68rem', fontWeight:700, color: buddy===b ? buddyMeta[b].color : '#7A8099' }}>{buddyMeta[b].label}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="rb-alpha-nav">
-              {LETTERS.map((lt, i) => (
-                <button key={lt.l} className={`rb-alpha-btn${i === current ? ' active' : ''}`} onClick={() => goTo(i)}>{lt.l}</button>
+
+            {/* Level */}
+            <div style={{ marginBottom:12 }}>
+              <div style={{ fontSize:'0.65rem', fontWeight:800, letterSpacing:'1.2px', textTransform:'uppercase', color:'#4a6b52', textAlign:'center', marginBottom:8 }}>Reading level</div>
+              <div style={{ display:'flex', justifyContent:'center', gap:8 }}>
+                {([['prep','🌱 Kindy'],['y1','⭐ Year 1'],['y2','🚀 Year 2']] as const).map(([lv,lb]) => (
+                  <button key={lv} onClick={() => setLevel(lv)} style={{ padding:'7px 14px', borderRadius:40, border:`2px solid ${level===lv ? '#2BB5A0' : '#DDD8CF'}`, background: level===lv ? '#2BB5A0' : 'white', color: level===lv ? 'white' : '#7A8099', fontFamily:'inherit', fontWeight:700, fontSize:'0.72rem', cursor:'pointer', transition:'all 0.2s' }}>{lb}</button>
+                ))}
+              </div>
+            </div>
+
+            {/* Type */}
+            <div style={{ marginBottom:16 }}>
+              <div style={{ fontSize:'0.65rem', fontWeight:800, letterSpacing:'1.2px', textTransform:'uppercase', color:'#4a6b52', textAlign:'center', marginBottom:8 }}>Type of book</div>
+              <div style={{ display:'flex', justifyContent:'center', gap:7, flexWrap:'wrap' }}>
+                {([['phonics','🔤 Phonics'],['stories','🌈 Stories'],['rhymes','🎵 Rhymes'],['facts','🔬 Facts']] as const).map(([bt,bl]) => (
+                  <button key={bt} onClick={() => setBtype(bt)} style={{ padding:'6px 13px', borderRadius:10, border:`2px solid ${btype===bt ? typeColors[bt] : '#DDD8CF'}`, background: btype===bt ? typeColors[bt] : 'white', color: btype===bt ? 'white' : '#7A8099', fontFamily:'inherit', fontWeight:700, fontSize:'0.72rem', cursor:'pointer', transition:'all 0.2s' }}>{bl}</button>
+                ))}
+              </div>
+            </div>
+
+            {/* Books grid */}
+            <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:10, marginBottom:16 }}>
+              {books.map((bk, i) => (
+                <div key={i} onClick={() => alert(`📖 Opening "${bk.title}" with ${bm.label}!`)}
+                  style={{ gridColumn: bk.featured ? 'span 2' : 'span 1', background:'white', borderRadius:12, overflow:'hidden', cursor:'pointer', boxShadow:'0 2px 8px rgba(0,0,0,0.07)', display:'flex', flexDirection: bk.featured ? 'row' : 'column', transition:'transform 0.2s' }}
+                  onMouseEnter={e => (e.currentTarget.style.transform='translateY(-3px) rotate(-1deg)')}
+                  onMouseLeave={e => (e.currentTarget.style.transform='none')}
+                >
+                  <div style={{ flexShrink:0, ...(bk.featured ? { width:100, minHeight:90 } : { height:90 }) }}
+                    dangerouslySetInnerHTML={{ __html: coverSVG(bk.coverKey, bk.bg) }} />
+                  <div style={{ padding:'8px 10px 10px' }}>
+                    <span style={{ display:'inline-block', fontSize:'0.6rem', fontWeight:800, letterSpacing:'0.6px', textTransform:'uppercase', padding:'2px 7px', borderRadius:20, marginBottom:4, background:`${bk.levelColor}22`, color:bk.levelColor }}>{bk.level}</span>
+                    <div style={{ fontSize:'0.72rem', fontWeight:800, color:'#1A2340', lineHeight:1.3, marginBottom:3 }}>{bk.title}</div>
+                    <div style={{ fontSize:'0.62rem', fontWeight:600, color:'#7A8099' }}>{bm.label} reads with you</div>
+                  </div>
+                </div>
               ))}
             </div>
-            <div className="rb-letter-stage">
-              <div className="rb-letter-card">
-                <div className="rb-letter-big">{d.l}</div>
-                <div className="rb-letter-small">{d.l.toLowerCase()}</div>
-                <div className="rb-letter-word">{d.word}</div>
-              </div>
-              <div className="rb-letter-img-card">
-                {d.img && !imgErr ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={`https://learningbuddy.vercel.app/${d.img}.png`} alt={d.caption} onError={() => setImgErr(true)} />
-                ) : (
-                  <div className="rb-emoji-display">{d.emoji}</div>
-                )}
-                <p>{d.caption}</p>
-              </div>
+
+            {/* CTA */}
+            <div style={{ textAlign:'center' }}>
+              <a href="/signup?plan=freemium" style={{ display:'inline-block', background:'#2BB5A0', color:'white', fontFamily:'Fraunces,serif', fontWeight:800, fontSize:'0.95rem', padding:'11px 28px', borderRadius:40, textDecoration:'none', boxShadow:'0 4px 0 #1E8C7A', transition:'transform 0.15s' }}
+                onMouseEnter={e => (e.currentTarget.style.transform='translateY(-2px)')}
+                onMouseLeave={e => (e.currentTarget.style.transform='none')}
+              >
+                Start Reading with {bm.label} 📖
+              </a>
             </div>
-            <div className="rb-progress">
-              <div className="rb-progress-label">Session progress</div>
-              <div className="rb-progress-track"><div className="rb-progress-fill" style={{ width: `${pct}%` }} /></div>
-              <div className="rb-progress-label">{current + 1} / 26</div>
-            </div>
-            <div className="rb-weblet-nav-btns">
-              <button className="rb-wnav-btn" onClick={() => goTo((current - 1 + 26) % 26)}>← Previous</button>
-              <button className="rb-wnav-btn primary" onClick={() => goTo((current + 1) % 26)}>Next Letter →</button>
-              <a className="rb-wnav-btn amber" href="mailto:readingbuddy@outcome-ready.com">Get Full Access ✨</a>
-            </div>
+
           </div>
         </div>
       </div>
     </div>
   )
 }
+
 
 export default function Home() {
   return (
@@ -340,7 +467,7 @@ export default function Home() {
       </section>
 
       {/* LEARNING BUDDY WEBLET */}
-      <LearningWeblet />
+      <ReadingBuddiesWeblet />
 
       {/* CLASS HEALTH DASHBOARD */}
       <section className="rb-section-dark" id="features">
