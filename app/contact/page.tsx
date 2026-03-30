@@ -99,7 +99,7 @@ export default function Contact() {
                 <button type="submit" disabled={status==='loading'} style={{ background:C.sage, color:'white', padding:'1rem', borderRadius:50, fontWeight:700, fontSize:'1rem', border:'none', cursor:'pointer', opacity:status==='loading' ? 0.7 : 1, fontFamily:'DM Sans,sans-serif' }}>
                   {status==='loading' ? 'Sending…' : 'Send message →'}
                 </button>
-                {status==='error' && <p style={{ color:'#c0392b', fontSize:'0.85rem', textAlign:'center' as const }}>Something went wrong. Email us at readingbuddies@outcome-ready.com</p>}
+                {status==='error' && <p style={{ color:'#c0392b', fontSize:'0.85rem', textAlign:'center' as const }}>Something went wrong. Email us at readingbuddy@outcome-ready.com</p>}
               </form>
             </div>
           )}
