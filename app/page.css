@@ -232,12 +232,35 @@ a { text-decoration: none; color: inherit; }
 
 /* CONTEXTS */
 .rb-contexts-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; margin-top: 48px; }
-.rb-ctx { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r-lg); padding: 32px 28px; transition: all 0.25s; display: flex; gap: 20px; align-items: flex-start; }
-.rb-ctx:hover { border-color: var(--teal-light); box-shadow: 0 4px 24px rgba(29,110,99,0.10); transform: translateY(-2px); }
-.rb-ctx-icon { font-size: 2.4rem; flex-shrink: 0; }
-.rb-ctx h3 { font-family: var(--font-head); font-weight: 800; font-size: 1.05rem; color: var(--navy); margin-bottom: 6px; }
-.rb-ctx p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+/* FLIP CARD SYSTEM */
+.rb-ctx-wrap { perspective: 1200px; height: 340px; cursor: pointer; }
+.rb-ctx-inner { position: relative; width: 100%; height: 100%; transition: transform 0.65s cubic-bezier(0.4,0.2,0.2,1); transform-style: preserve-3d; }
+.rb-ctx-wrap:hover .rb-ctx-inner, .rb-ctx-wrap.flipped .rb-ctx-inner { transform: rotateY(180deg); }
+.rb-ctx-front, .rb-ctx-back { position: absolute; inset: 0; border-radius: var(--r-lg); overflow: hidden; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.rb-ctx-front { display: grid; grid-template-columns: 1fr 1fr; }
+.rb-ctx-back { transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; padding: 32px 28px; background: var(--white); border: 1.5px solid var(--border); }
+
+/* Front left panel */
+.rb-ctx-left { display: flex; flex-direction: column; justify-content: space-between; padding: 24px 20px; }
+.rb-ctx-tagline { font-size: 0.82rem; line-height: 1.55; color: rgba(255,255,255,0.85); flex: 1; margin-bottom: 16px; }
+.rb-ctx-pills { display: flex; flex-direction: column; gap: 8px; }
+.rb-ctx-pill { background: rgba(0,0,0,0.25); border-radius: 8px; padding: 6px 10px; display: flex; align-items: baseline; gap: 6px; }
+.rb-ctx-pill-val { font-family: var(--font-head); font-weight: 800; font-size: 0.95rem; color: #fff; }
+.rb-ctx-pill-label { font-size: 0.65rem; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.04em; }
+
+/* Front right: app screenshot */
+.rb-ctx-right { position: relative; overflow: hidden; background: #f5f5f5; }
+.rb-ctx-right img { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+
+/* Back */
+.rb-ctx-back-icon { font-size: 2rem; margin-bottom: 10px; }
+.rb-ctx-back h3 { font-family: var(--font-head); font-weight: 800; font-size: 1.05rem; color: var(--navy); margin-bottom: 8px; }
+.rb-ctx-back p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; margin-bottom: 16px; }
+.rb-ctx-back ul { list-style: none; margin: 0 0 18px; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.rb-ctx-back ul li { font-size: 0.82rem; color: var(--muted); display: flex; gap: 8px; align-items: flex-start; }
+.rb-ctx-back ul li::before { content: '✓'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
 .rb-ctx-link { font-family: var(--font-head); font-weight: 700; font-size: 0.82rem; color: var(--teal); }
+.rb-ctx-flip-hint { font-size: 0.65rem; color: var(--muted); position: absolute; bottom: 10px; right: 14px; opacity: 0.5; }
 
 /* CTA BAND */
 .rb-cta-band { background: linear-gradient(135deg,var(--amber),var(--amber-dark)); padding: 64px 5%; text-align: center; }
