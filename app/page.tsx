@@ -535,6 +535,7 @@ export default function Home() {
               img: IMGS.sceneClassroom,
               link: 'Public & Private Schools',
               linkHref: 'mailto:readingbuddy@outcome-ready.com?subject=Schools',
+              downloadHref: '/download?type=classroom',
               backDesc: 'Every student scored in every session. Teachers receive six automatic reports — no marking, no clipboards, no levelling kits.',
               bullets: ['WPM, accuracy & prosody scored in 30 seconds', 'Growth tracked against national benchmarks', 'Parent snapshots auto-sent after each session', 'Works on any classroom device — no hardware'],
             },
@@ -547,6 +548,7 @@ export default function Home() {
               img: IMGS.sceneNdis,
               link: 'NDIS Providers',
               linkHref: 'mailto:readingbuddy@outcome-ready.com?subject=NDIS',
+              downloadHref: '/download?type=clinic',
               backDesc: 'NDIS Practice Standards–aligned progress notes generated automatically. Providers spend their time in therapy, not paperwork.',
               bullets: ['Goal-referenced notes — no copy-paste', 'Timestamped & audit-ready from day one', 'Books mapped directly to participant NDIS goals', 'Bulk export for plan reviews & audits'],
             },
@@ -559,6 +561,7 @@ export default function Home() {
               img: IMGS.sceneHome,
               link: 'Parents',
               linkHref: 'mailto:readingbuddy@outcome-ready.com?subject=Parents',
+              downloadHref: '/download?type=home',
               backDesc: 'Parents stay in the loop without needing to understand reading levels. Plain-English snapshots land automatically after every session.',
               bullets: ['What they practised — in simple language', 'Progress vs. reading age benchmarks', 'What to work on at home this week', 'No app install required for parents'],
             },
@@ -571,6 +574,7 @@ export default function Home() {
               img: IMGS.scenePrincipal,
               link: 'School Leaders',
               linkHref: 'mailto:readingbuddy@outcome-ready.com?subject=SchoolLeaders',
+              downloadHref: '/download?type=school',
               backDesc: 'Principals see literacy health across every classroom in real time — colour-coded alerts, drill down from school to student in two clicks.',
               bullets: ['Whole-school literacy dashboard — live', 'Colour-coded: on track / watch / alert', 'Drill down: school → class → student', 'NAPLAN-ready reporting built in'],
             },
@@ -608,6 +612,8 @@ export default function Home() {
                   <ul>
                     {c.bullets.map(b => <li key={b}>{b}</li>)}
                   </ul>
+                  <a href={c.downloadHref} style={{ display: 'inline-block', background: c.color, color: '#fff', borderRadius: 8, padding: '9px 16px', fontFamily: 'var(--font-head)', fontWeight: 700, fontSize: '0.82rem', textDecoration: 'none', marginBottom: 10 }}>⬇ Download sample report</a>
+                  <br />
                   <a href={c.linkHref} className="rb-ctx-link">{c.link} →</a>
                 </div>
               </div>
