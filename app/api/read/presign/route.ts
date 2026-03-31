@@ -1,11 +1,12 @@
+export const runtime = 'nodejs'
+
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3'
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
-import crypto from 'crypto'
 
 const s3 = new S3Client({
-  region: 'ap-southeast-2',
+  region: process.env.AWS_REGION || 'ap-southeast-2',
   credentials: {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
@@ -24,7 +25,6 @@ export async function POST(req: NextRequest) {
   const ext = content_type === 'audio/mp4' ? 'mp4' : 'webm'
   const s3_key = `reading-buddy/audio/${reader_id}/${capture_id}.${ext}`
 
-  // Generate pre-signed PUT URL — 10 min expiry
   const command = new PutObjectCommand({
     Bucket: BUCKET,
     Key: s3_key,
@@ -32,7 +32,6 @@ export async function POST(req: NextRequest) {
   })
   const presigned_url = await getSignedUrl(s3, command, { expiresIn: 600 })
 
-  // Register the capture row in Supabase
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!,
@@ -47,8 +46,8 @@ export async function POST(req: NextRequest) {
     s3_bucket: BUCKET,
     file_format: ext,
     capture_surface: 'web',
-    capture_os: req.headers.get('user-agent')?.includes('iPad') ? 'ios' :
-                req.headers.get('user-agent')?.includes('Android') ? 'android' : 'web',
+    capture_os: req.headers.get('user-agent')?.includes('iPad') ? 'ios'
+              : req.headers.get('user-agent')?.includes('Android') ? 'android' : 'web',
     processing_status: 'PENDING',
   })
 
