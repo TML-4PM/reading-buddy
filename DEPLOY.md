@@ -140,4 +140,9 @@ UPDATE cap_secrets SET value = '<new_pat>' WHERE key = 'GITHUB_PAT';
 - app/api/read/presign/route.ts — S3 pre-signed upload
 - app/api/read/process/route.ts — Lambda async trigger
 - AWS SDK deps added to package.json
+## Wire 2026-03-31T07:22:29Z
+- Lambda v1.1: fn_rb_complete_running_record called after alignment
+- API routes: nodejs runtime declared
+- Nav: /read + /teacher links
+- app/teacher/page.tsx: realtime dashboard
 
